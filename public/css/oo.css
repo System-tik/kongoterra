@@ -1,0 +1,98 @@
+.div-welcome div {
+    float: left;
+    clear: none;
+}
+
+.slide-left-1 {
+    position: relative;
+    animation: animationl1 1s ease-out;
+    animation-fill-mode: forwards;
+  }
+
+
+@keyframes animationl1 {
+    0% {
+      /* opacity: 0; */
+      left: 0%;
+      width: 25%;
+    }
+    50%{
+        width: 30%;
+    }
+    100% {
+      /* opacity: 1; */
+      width: 25%;
+      left: 75%;
+    }
+}
+/* right 1 */
+.slide-right-1 {
+    position: relative;
+    animation: animationr1 1s ease-out;
+    animation-fill-mode: forwards;
+  }
+
+
+@keyframes animationr1 {
+    0% {
+      /* opacity: 0; */
+      left: 75%;
+      width: 25%;
+    }
+    50%{
+        width: 30%;
+    }
+
+    100% {
+      /* opacity: 1; */
+      left: 0%;
+    }
+}
+
+/* bloc 2 */
+.slide-left-2 {
+    position: relative;
+    animation: animationl2 1s ease-out;
+    animation-fill-mode: forwards;
+  }
+
+
+@keyframes animationl2 {
+    0% {
+      opacity: 0;
+      left: 0%;
+    }
+
+    90% {
+      opacity: .2;
+    }
+
+    100% {
+      opacity: 1;
+      left: -25%;
+    }
+}
+/* right 1 */
+.slide-right-2 {
+    position: relative;
+    animation: animationr2 1s ease-out;
+    animation-fill-mode: forwards;
+  }
+
+
+@keyframes animationr2 {
+    0% {
+      opacity: 0;
+      left: -25%;
+    }
+
+    90% {
+        opacity: .2;
+    }
+
+    100% {
+      opacity: 1;
+      left: 0%;
+    }
+}
+
