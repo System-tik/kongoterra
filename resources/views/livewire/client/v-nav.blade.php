@@ -1,4 +1,4 @@
-<div class="fixed top-0 w-full" x-data="{
+<div class="fixed top-0 z-10 w-full" x-data="{
     connexion : true,
     mod_ins : false,
     mod_panier : false,

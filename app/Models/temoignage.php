@@ -12,7 +12,7 @@ class temoignage extends Model
         "contenu", 
         "lien", 
         "nom", 
-        "preno", 
+        "prenom", 
         "adresse", 
         "pays", 
         "email", 
@@ -26,9 +26,7 @@ class temoignage extends Model
         "center_ttt", 
         "prescripteur", 
         "type_prescri", 
-        "jour_t", 
-        "mois_t", 
-        "an_t", 
+        "date_t", 
         "ttt", 
         "type_ttt", 
         "dosage", 
@@ -45,9 +43,9 @@ class temoignage extends Model
     ];
 
     protected $casts = [
-        "signe",
-        "evolu_temp",
-        "evolu_paras",
-        "effet_ind"
+        "signe"=>"array",
+        "evolu_temp"=>"array",
+        "evolu_paras"=>"array",
+        "effet_ind"=>"array"
     ];
 }

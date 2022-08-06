@@ -32,9 +32,7 @@ class CreateTemoignagesTable extends Migration
             $table->string("center_ttt");
             $table->string("prescripteur");
             $table->boolean("type_prescri");
-            $table->integer("jour_t");
-            $table->integer("mois_t");
-            $table->integer("an_t");
+            $table->date("date_t");
             $table->text("ttt");//plante medicinales
             $table->string("type_ttt");
             $table->integer("dosage");//en gramme par personne
@@ -44,8 +42,8 @@ class CreateTemoignagesTable extends Migration
             $table->json("evolu_temp")->nullable();//evolution de la temperature
             $table->json("evolu_paras")->nullable();//evolution de la parasitemie
             $table->json("effet_ind")->nullable();//effets indesirables observes
-            $table->boolean("rechute");
-            $table->date("date_rechute");
+            $table->string("rechute");
+            $table->date("date_rechute")->nullable();
             $table->string("dep_res")->nullable();//depistage de resistance
             $table->string("remarque")->nullable();
 
