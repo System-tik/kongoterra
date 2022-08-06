@@ -87,7 +87,7 @@
         </div>
     </div>
 
-    {{-- Modal formulaire --}}
+    {{-- Modal formulaires --}}
     <div class="fixed left-0 z-0 flex flex-col items-center justify-center w-screen h-screen px-5 pt-5 text-left xl:px-96 lg:px-32 md:px-24 bg-t-black top-16" x-show="form" x-transition.1500ms
         x-data="{
             step : 1,
