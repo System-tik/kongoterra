@@ -2,6 +2,8 @@
 
     <div class="grid gap-10 px-5 py-20 text-white bg-gray-900 xl:px-72 lg:px-32 md:px-24 lg:grid-cols-2">
         {{-- Success is as dangerous as failure. --}}
+        @if (count($infos) > 0)
+            
         <div class="flex flex-col">
             <div class="flex items-center gap-5 py-5 border-b border-gray-800">
                 <div>
@@ -62,6 +64,7 @@
                 </a>
             </div>
         </div>
+        @endif
         
     </div>
     <div class="px-5 py-2 text-white bg-gray-700 xl:px-72 lg:px-32 md:px-24">

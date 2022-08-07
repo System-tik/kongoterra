@@ -3,6 +3,7 @@
     <h1 class="py-10 text-3xl text-center text-white">Decouvrir nos principes</h1>
     
     <div class="grid grid-cols-2 pb-10 text-2xl text-gray-200 lg:grid-cols-4">
+        @if (count($abouts) > 0)    
         @foreach ($abouts[4]["sous"] as $ss)
             
         <a href="{{ route('about', ['id'=> $abouts[4]['id']]) }}" class="flex flex-col items-center justify-center gap-5 text-white hover:text-yellow-100">
@@ -12,6 +13,7 @@
             <p class="text-lg text-center">{{ explode(":", $ss)[0] }}</p>
         </a>
         @endforeach        
+        @endif
         
     </div>
     

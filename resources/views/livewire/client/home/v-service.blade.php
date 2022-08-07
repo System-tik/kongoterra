@@ -3,6 +3,8 @@
     <h1 class="text-2xl font-bold">Nos services</h1>
     <hr>
     <div class="grid gap-10 py-5 lg:grid-cols-2">
+        @if (count($services) > 0)
+            
         @foreach ($services as $serv) 
         <div class="flex flex-col flex-1 p-3 shadow">
             <div class="flex items-center gap-4 py-2 border-b">
@@ -17,5 +19,6 @@
             <p class="pt-5 text-justify">{{ $serv->descrip }}</p>
         </div>   
         @endforeach
+        @endif
     </div>
 </div>

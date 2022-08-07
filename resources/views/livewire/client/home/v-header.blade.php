@@ -7,7 +7,7 @@
         }
     }
 }">
-    
+    @if (count($abouts) > 0)    
     <div class="bg-cover" style="background-image:url('{{ asset('img/fond/ac.jpg') }}'); height:60vh;" >
         <div class="flex flex-col justify-center w-full h-full px-5 text-white xl:px-72 lg:px-32 md:px-24" style="background-color: rgba(0, 0, 0, .3)">
             <h1 class="px-5 py-2 text-4xl text-center lg:py-5 lg:text-justify">KONGOTERRA</h1>
@@ -22,6 +22,7 @@
             </p>
         </div>
     </div>
+    @endif
     <div class="flex {{-- flex-col --}} items-center justify-center w-full gap-20 lg:text-2xl text-gray-200 lg:gap-56 lg:flex-row md:gap-36" style="height:25vh;">
         <button class="flex flex-col items-center justify-center gap-5 text-gray-500 " @click="aff(0)">
             <div class="p-5 text-white bg-green-600 rounded-full">
