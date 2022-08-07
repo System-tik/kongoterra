@@ -17,7 +17,7 @@
     </head>
     <body x-data="{isScrollAtTop: true}" x-init="window.scrollTo({top: 0, behavior: 'smooth'})">
         @yield('client')
-        <livewire:client.v-nav />
+        {{-- <livewire:client.v-nav /> --}}
         <button  x-data @click="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-0 px-10 py-2 text-white transition duration-500 bg-gray-700 right-1 hover:bg-slate-800">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
