@@ -147,7 +147,7 @@ class VProduits extends Component
             
             for ($i=0; $i < count($this->galleries); $i++) { 
                 # code...
-                $filename = ($last == 0 && $i == 0) ? 1 : (($last == 0 && $i != 0) ? $i + 1 : ($last != 0 && $i == 0) ? $last + 1 : $i + $last);
+                $filename = (($last == 0 && $i == 0) ? 1 : (($last == 0 && $i != 0) ? $i + 1 : ($last != 0 && $i == 0) ? $last + 1 : $i + $last));
                 /* 
                 0,0=> 1
                 0, !0 => $i+1
