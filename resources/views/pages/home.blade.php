@@ -6,6 +6,6 @@
     <livewire:client.home.v-produit :excep="null"  />
     <livewire:client.home.v-service />
 
-    <livewire:client.v-footer>
+    {{-- <livewire:client.v-footer> --}}
 </div>
 @endsection
