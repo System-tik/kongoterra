@@ -50,12 +50,12 @@
                     <div class="flex rounded shadow cursor-pointer " wire:click="fillInputs({{$inf}})">
                         <div class="flex items-center justify-center p-4 text-white bg-slate-500">
                             @if ($inf->type == "Social")
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" fill="none" viewBox="{{ explode('|', $inf->icon)[1] }}" stroke="currentColor" stroke-width="2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-current" viewBox="{{ explode('|', $inf->icon)[1] }}">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="{{ explode('|', $inf->icon)[0] }}" />
                             </svg>
                             @else
                                 
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="{{ explode('|', $inf->icon)[1] }}" stroke="currentColor" stroke-width="2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="{{ explode('|', $inf->icon)[1] }}" stroke="currentColor" stroke-width="1.5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="{{ explode('|', $inf->icon)[0] }}" />
                             </svg>
                             @endif

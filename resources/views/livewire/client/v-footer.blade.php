@@ -20,7 +20,7 @@
                 @if ($inf->type !== "Social")    
                 <div class="flex items-center gap-2 py-2">
                     <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
                             <path stroke-linecap="round" stroke-linejoin="round" d="{{ $inf->icon }}" />
                         </svg>
                     </div>
@@ -47,9 +47,9 @@
             <div class="flex items-center pb-10 border-b border-gray-800 gap-7">
                 @foreach ($infos as $inf)   
                 @if ($inf->type == "Social")    
-                <a href="#" id="">
+                <a href="{{$inf->contenu}}" id="">
                     <div class="p-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 fill-current" fill="none" viewBox="{{ explode('|', $inf->icon)[1] }}" stroke="currentColor" stroke-width="2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 fill-current" viewBox="{{ explode('|', $inf->icon)[1] }}">
                             <path stroke-linecap="round" stroke-linejoin="round" d="{{ explode('|', $inf->icon)[0] }}" />
                         </svg>
                     </div>
