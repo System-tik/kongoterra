@@ -62,7 +62,7 @@
                         </div>
                         <div class="flex-1 px-2">
                             <p>{{ $inf->titre }} </p>
-                            <p>{{ $inf->contenu }}</p>
+                            <p>{{ substr($inf->contenu,0,35) }}...</p>
                         </div>
                     </div>
                 @empty
