@@ -51,39 +51,62 @@
         <div class="w-full p-5" x-data="{
             ecrit : true,
         }">
-            <div class="flex items-center justify-center gap-10 pb-10 text-xl">
-                <button @click="ecrit=true" class="pb-2 border-b-2" :class="{'border-green-600':ecrit, 'border-transparent':!ecrit}">Les témoignages ecrits</button>
-                <button @click="ecrit=false" class="pb-2 border-b-2" :class="{'border-green-600':!ecrit, 'border-transparent':ecrit}">Les témoignages videos</button>
+        @if (count($temoignages) > 0)
+            
+        <div class="flex items-center justify-center gap-10 pb-10 text-xl">
+            <button @click="ecrit=true" class="pb-2 border-b-2" :class="{'border-green-600':ecrit, 'border-transparent':!ecrit}">Les témoignages ecrits</button>
+            <button @click="ecrit=false" class="pb-2 border-b-2" :class="{'border-green-600':!ecrit, 'border-transparent':ecrit}">Les témoignages videos</button>
+        </div>
+        <div class="w-full">
+            {{-- Temoignage ecrit --}}
+            <div class="grid w-full grid-cols-2 gap-10 p-5" x-show="ecrit">
+                @foreach ($temoignages as $tem)    
+                <div class="flex flex-col p-5 shadow-2xl">
+                    <div class="flex-1 w-full">
+                        <b>
+                            <svg  class="" style="" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z"/></svg>
+                        </b>
+                        <p>
+                            {{$tem->contenu}}
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-end w-full text-gray-500">
+                        <p>par {{$tem->nom}} {{$tem->prenom}}, <b> {{explode(' ', $tem->created_at)[0]}}</b></p>
+                    </div>
+                </div>                    
+                @endforeach
             </div>
-            <div class="w-full">
-                {{-- Temoignage ecrit --}}
-                <div class="grid w-full grid-cols-2 gap-10 p-5" x-show="ecrit">
-                    @foreach ($temoignages as $tem)    
-                    <div class="flex flex-col p-5 shadow-2xl">
-                        <div class="flex-1">
-                            <b>
-                                <svg  class="" style="" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z"/></svg>
-                            </b>
-                            <p>
-                                {{$tem->contenu}}
-                            </p>
-                        </div>
-                        <div class="py-3">
-                            kdkdkd
-                        </div>
-                    </div>                    
-                    @endforeach
-                </div>
-                {{-- Temoignage video --}}
-                <div class="" x-show="!ecrit">
-                    video
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                        <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-                    </svg>
-                </div>
+            {{-- Temoignage video --}}
+            <div class="" x-show="!ecrit">
+                @foreach ($temoignages as $tem)   
+                @if (strlen($tem->lien) > 0)    
+                <div class="flex flex-col p-5 shadow-2xl">
+                    <div class="flex-1 w-full">
+                        <iframe 
+                            width="1280" 
+                            height="720" 
+                            src="https://www.youtube.com/embed/{{strpos(explode('/', $tem->lien)[3], '=') == false ? explode('/', $tem->lien)[3] : explode('=', explode('/', $tem->lien)[3])[1]}}" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                        <p>
+                            {{$tem->contenu}} 
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-end w-full text-gray-500">
+                        <p>par {{$tem->nom}} {{$tem->prenom}}, <b> {{explode(' ', $tem->created_at)[0]}}</b></p>
+                    </div>
+                </div>                    
+                @endif 
+                @endforeach
             </div>
+        </div>
+        @else
+            <div class="flex items-center justify-center">
+                <p class="text-gray-500">Pas des temoignages pour l'instant</p>
+            </div>
+        @endif
         </div>
     </div>
 
