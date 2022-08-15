@@ -32,7 +32,7 @@
                             <a href="mailto:{{$inf->contenu}}">{{ $inf->contenu }}</a>
                             @break
                         @case('Lien')
-                            <a href="http://{{$inf->contenu}}">{{ $inf->contenu }}</a>
+                            <a href="http://{{$inf->contenu}}" target="_blank">{{ $inf->contenu }}</a>
                             @break
                         @default
                             <p>{{ $inf->contenu }}</p>
@@ -47,7 +47,7 @@
             <div class="flex items-center pb-10 border-b border-gray-800 gap-7">
                 @foreach ($infos as $inf)   
                 @if ($inf->type == "Social")    
-                <a href="{{$inf->contenu}}" id="">
+                <a href="{{$inf->contenu}}" id="" target="_blank">
                     <div class="p-1">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 fill-current" viewBox="{{ explode('|', $inf->icon)[1] }}">
                             <path stroke-linecap="round" stroke-linejoin="round" d="{{ explode('|', $inf->icon)[0] }}" />
