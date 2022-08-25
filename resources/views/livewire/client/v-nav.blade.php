@@ -1,21 +1,27 @@
-<div class="fixed top-0 z-10 w-full" x-data="{
+<div class="fixed top-0 w-screen" x-data="{
     connexion : true,
     mod_ins : false,
     mod_panier : false,
     add_panier : false,
+    open : false,
     client : true,
     connecter(){
         if(!this.mod_ins){
             this.mod_ins=true;
             this.connexion=true;
+            this.open = false;
         }
         else if(this.connexion) this.mod_ins=false;
-        else this.connexion=true;
+        else {
+            this.connexion=true;
+            this.open = false;
+        }
     },
     inscrire(){
         if(!this.mod_ins){
             this.mod_ins=true;
             this.connexion=false;
+            this.open = false;
         }
         else if(!this.connexion) this.mod_ins=false;
         else this.connexion=false;
@@ -55,13 +61,13 @@
         }); --}}
     }
 }" @scroll.window="isScrollAtTop = (window.pageYOffset > 60) ? false : true" x-init="init()">
-    <div class="flex py-3 lg:px-32 md:px-24 xl:px-72" :class="{'bg-gray-50':isScrollAtTop, 'bg-t-black':!isScrollAtTop}">
+    <div class="flex px-2 py-3 lg:px-32 md:px-24 xl:px-72 bg-gray-50" >
         <div class="flex items-center justify-center gap-5">
             <div>
-                <img src="{{asset('img/logo/logo.png')}}" alt="" class="transition duration-500 transform w-28" {{-- :class="{'w-28':isScrollAtTop, 'w-10':!isScrollAtTop}" --}} x-show="isScrollAtTop">
+                <img src="{{asset('img/logo/logo.png')}}" alt="" class="w-10 transition duration-500 transform md:w-28" >
             </div>
             <div class="flex flex-col items-start justify-center" x-show="isScrollAtTop" x-transition.500ms>
-                <h2>Kongoterra</h2>
+                <h2 class="hidden lg:flex">Kongoterra</h2>
                 <h3>Pour une santé saine et équilibrée</h3>
             </div>
         </div>
@@ -75,14 +81,13 @@
                     <svg class="w-8 h-8 p-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                 </button>
             </div>
-            <div x-show="!isScrollAtTop">
+            {{-- <div x-show="!isScrollAtTop">
                 <img src="{{asset('img/logo/logo.png')}}" alt="" class="transition duration-500 transform " :class="{'w-28':isScrollAtTop, 'w-10':!isScrollAtTop}">
-            </div>
+            </div> --}}
         </div>
     </div>
-    <nav class="xl:px-72 lg:px-32 md:px-24" x-data="
+    <nav class="bg-gray-900 xl:px-72 lg:px-32 md:px-24" x-data="
         {
-            open : false,
             nav : [true, false, false, false, false, false],
             navig(id){
                 if(this.nav[id] != true){
@@ -92,7 +97,7 @@
             about : false,
             parti : false
         }
-    " :class="{'bg-gray-900':isScrollAtTop, 'bg-t-black':!isScrollAtTop}">
+    " >
         <div class="mx-auto" >
             <div class="{{-- items-center justify-center --}} hidden lg:flex ">
                 <a href="/" @click="navig(0)" :class="{'text-green-400' : nav[0], 'text-white' : nav[0], 'text-gray-200' : !nav[0]}" class="h-full py-3 pr-10 text-lg transition duration-300 hover:text-gray-400">Accueil</a>
@@ -136,18 +141,18 @@
             </div>
             <div class="flex items-center justify-between px-2 py-2 lg:hidden">
                 <p class="font-bold text-green-600">Kongoterra</p>
-                <a href="#" class="h-full px-3 py-1 text-lg text-gray-200 transition duration-300 border hover:text-gray-400" @click="open=!open">
+                <button href="#" class="h-full px-3 py-1 text-lg text-gray-200 transition duration-300 border hover:text-gray-400" @click="open=!open">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </a>
+                </button>
             </div>
-            <div class="z-0 flex flex-col lg:hidden" x-show="open" x-transition.500ms>
+            <div class="z-0 flex flex-col bg-gray-900 lg:hidden" x-show="open" x-transition.500ms>
                 <a href="/" class="h-full px-10 py-3 text-lg text-white transition duration-300 bg-green-600 hover:text-gray-200 hover:bg-gray-100">Accueil</a>
                 <a href="/#produits" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Nos Produits</a>
                 <a href="/#services" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Nos services</a>
                 <a href="/#footer" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Contacts</a>
                 <div class="h-full py-3 text-lg transition duration-300 cursor-pointer hover:text-gray-400">
-                    <p @click="about=true" class="flex gap-3 px-6">A propos de nous <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></p>
-                    <div class="flex flex-col p-1 px-6 bg-gray-100" x-show="about" @click.away="about=false">
+                    <p @click="about=true" class="flex gap-3 px-6 text-gray-200">A propos de nous <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></p>
+                    <div class="flex flex-col p-1 px-6 " x-show="about" @click.away="about=false">
                         @foreach ($abouts as $ns)
                         <a href="{{ route('about', ['id'=> $ns->id]) }}" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 border-b hover:text-gray-400">{{$ns->titre}}</a>
                         @endforeach

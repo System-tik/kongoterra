@@ -55,3 +55,35 @@ Route::middleware([
         return view('dashboard', ["menus"=>Config::get("constantes.admin.menu")]);
     })->name('dashboard');
 });
+
+/* Mobile API */
+Route::prefix('mobile')->group(function () {
+    Route::get('/', function () {
+        return view('pages.mobile.home');
+    })->name("home");
+    
+    Route::get('/about/{id}', function ($id) {
+        return view('pages.about', ['id'=>$id]);
+    })->name("aboutm");
+    
+    Route::get('/point-vente', function () {
+        return view('pages.magasins');
+    })->name("pvm");
+    
+    Route::get('/actualite', function () {
+        return view('pages.actu');
+    })->name("actum");
+    
+    Route::get('/produits', function () {
+        return view('pages.produits');
+    })->name("prodm");
+    Route::get('/detail/{id}', function ($id) {
+        return view('pages.detail_produit', ['id'=>$id]);
+    })->name("detailm");
+    Route::get('/commader', function () {
+        return view('pages.commader');
+    })->name("commanderm");
+    Route::get('/temoignages', function () {
+        return view('pages.temoignage');
+    })->name("temm");
+});

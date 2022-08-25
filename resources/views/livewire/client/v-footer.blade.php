@@ -1,6 +1,6 @@
-<div id="footer">
+<div id="footer" class="w-full">
 
-    <div class="grid gap-10 px-5 py-20 text-white bg-gray-900 xl:px-72 lg:px-32 md:px-24 lg:grid-cols-2">
+    <div class="grid w-full gap-10 px-5 py-5 text-white bg-gray-900 lg:py-20 xl:px-72 lg:px-32 md:px-24 lg:grid-cols-2">
         {{-- Success is as dangerous as failure. --}}
         @if (count($infos) > 0)
             
@@ -43,7 +43,7 @@
             </div>
         </div>
         <div>
-            <h1 class="py-5 text-lg">Suivez-nous sur :</h1>
+            <h1 class="text-lg lg:py-5">Suivez-nous sur :</h1>
             <div class="flex items-center pb-10 border-b border-gray-800 gap-7">
                 @foreach ($infos as $inf)   
                 @if ($inf->type == "Social")    
@@ -58,7 +58,7 @@
                 @endforeach
                 
             </div>
-            <div class="flex items-center py-10">
+            <div class="flex items-center py-3 lg:py-10">
                 <a href="#">
                     <img src="{{ asset('img/disponible-sur-Google-play.png') }}" alt="" class="w-56 ">
                 </a>
@@ -67,7 +67,7 @@
         @endif
         
     </div>
-    <div class="px-5 py-2 text-white bg-gray-700 xl:px-72 lg:px-32 md:px-24">
+    <div class="px-5 py-2 text-center text-white bg-gray-700 xl:px-72 lg:px-32 md:px-24 md:text-justify">
         {{-- Success is as dangerous as failure. --}}
         <p>&#9400; Kongoterra 2022,  by : Systematik|Facking</p>
         

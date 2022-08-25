@@ -9,22 +9,24 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/mon.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+        {{-- <link rel="stylesheet" href="{{ asset('css/mon.css') }}"> --}}
         @livewireStyles
 
         <!-- Scripts -->
+        <script src="{{asset('js/app.77519f8cfa26c8a4.hot-update.js')}}"></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body x-data="{isScrollAtTop: true}" x-init="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-screen overflow-x-hidden">
-        @yield('client')
-        <button  x-data @click="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-0 px-10 py-2 text-white transition duration-500 bg-gray-700 right-1 hover:bg-slate-800">
+    <body x-data="{isScrollAtTop: true}" x-init="window.scrollTo({top: 0, behavior: 'smooth'})">
+        {{-- <livewire:client.v-nav /> --}}
+        @yield('mobile')
+        {{-- <button  x-data @click="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-0 px-10 py-2 text-white transition duration-500 bg-gray-700 right-1 hover:bg-slate-800">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
             </svg>
-        </button>
-        <livewire:client.v-footer>
-        <livewire:client.v-nav />
+        </button> --}}
+        {{-- <livewire:client.v-footer> --}}
         @livewireScripts
         
     </body>
