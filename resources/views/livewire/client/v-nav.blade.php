@@ -61,7 +61,7 @@
         }); --}}
     }
 }" @scroll.window="isScrollAtTop = (window.pageYOffset > 60) ? false : true" x-init="init()">
-    <div class="flex px-2 py-3 lg:px-32 md:px-24 xl:px-72 bg-gray-50" >
+    <div class="flex px-2 py-3 2xl:px-64 lg:px-5 md:px-24 xl:px-24 bg-gray-50 " >
         <div class="flex items-center justify-center gap-5">
             <div>
                 <img src="{{asset('img/logo/logo.png')}}" alt="" class="w-10 transition duration-500 transform md:w-28" >
@@ -86,7 +86,7 @@
             </div> --}}
         </div>
     </div>
-    <nav class="bg-gray-900 xl:px-72 lg:px-32 md:px-24" x-data="
+    <nav class="bg-gray-900 2xl:px-64 lg:px-5 md:px-24 xl:px-24" x-data="
         {
             nav : [true, false, false, false, false, false],
             navig(id){
@@ -186,10 +186,10 @@
         </div>
     </nav>
     {{-- Connexion / Inscription --}}
-    <div class=" lg:px-32 md:px-24 xl:px-72 animate__animated" :class="{'animate__bounceInDown':mod_ins, 'animate__bounceOut': !mod_ins}" x-show="mod_ins" x-transition.500ms>
+    <div class=" 2xl:px-64 lg:px-5 md:px-24 xl:px-24 animate__animated" :class="{'animate__bounceInDown':mod_ins, 'animate__bounceOut': !mod_ins}" x-show="mod_ins" x-transition.500ms>
         <livewire:component.c-log>
     </div>
-    <div class=" animate__animated lg:px-32 md:px-24 xl:px-72" :class="{'animate__bounceInDown':mod_panier, 'animate__bounceOut': !mod_panier}" x-show="mod_panier" x-transition.500ms>
+    <div class=" animate__animated 2xl:px-64 lg:px-5 md:px-24 xl:px-24" :class="{'animate__bounceInDown':mod_panier, 'animate__bounceOut': !mod_panier}" x-show="mod_panier" x-transition.500ms>
         <livewire:component.c-user-panier>
     </div>
 

@@ -1,4 +1,4 @@
-<div class="justify-center lg:grid lg:grid-cols-5 lg:flex-row lg:gap-10 xl:px-72 lg:px-32 md:px-24" x-data="{
+<div class="justify-center lg:grid lg:grid-cols-5 lg:flex-row lg:gap-10 2xl:px-64 lg:px-5 md:px-24 xl:px-24" x-data="{
     conNotif : false,
     qte : false,
     init(){

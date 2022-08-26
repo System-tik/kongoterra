@@ -1,4 +1,4 @@
-<div class="px-5 py-5 lg:py-32 xl:px-72 lg:px-32 md:px-24" id="services">
+<div class="px-5 py-5 lg:py-32 2xl:px-64 lg:px-5 md:px-24 xl:px-24" id="services">
     {{-- Nothing in the world is as soft and yielding as water. --}}
     <h1 class="text-2xl font-bold">Nos services</h1>
     <hr>
