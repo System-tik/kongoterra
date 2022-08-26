@@ -51,11 +51,11 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        $menu = [1,2,3,4,5,6,7];
+        /* $menu = [1,2,3,4,5,6,7]; */
         return view('dashboard', ["menus"=>Config::get("constantes.admin.menu")]);
     })->name('dashboard');
 });
 
-Route::get('/send',function (){
+/* Route::get('/send',function (){
     return view('form');
-});
+}); */
