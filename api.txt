@@ -1,0 +1,14 @@
+//client
+http://127.0.0.1:8000/api/client/login
+http://127.0.0.1:8000/api/client/update/id
+http://127.0.0.1:8000/api/client/store
+//commande
+http://127.0.0.1:8000/api/commande/store
+http://127.0.0.1:8000/api/commande/update/id
+//panier
+http://127.0.0.1:8000/api/panier/store
+http://127.0.0.1:8000/api/panier/update/id
+http://127.0.0.1:8000/api/panier/delete/id
+
+//all api
+http://127.0.0.1:8000/api
