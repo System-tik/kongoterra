@@ -69,7 +69,7 @@
     </div>
     <div class="px-5 py-2 text-center text-white bg-gray-700 xl:px-72 lg:px-32 md:px-24 md:text-justify">
         {{-- Success is as dangerous as failure. --}}
-        <p>&#9400; Kongoterra 2022,  by : Systematik|Facking|Plblanche|hiram</p>
+        <p>&#9400; Kongoterra 2022,  by : Systematik</p>
         
     </div>
 </div>
