@@ -25,7 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/',[ApiController::class,'index']);
 
 //Routes panier
-Route::post('/panier/store/{token}',[ApiControllerPanier::class,'store'])->name('panier/store');
+Route::post('/panier/store',[ApiControllerPanier::class,'register'])->name('panier/store');
 Route::put('/panier/update/{id}',[ApiControllerPanier::class,'update']);
 Route::delete('/panier/delete/{id}',[ApiControllerPanier::class,'delete']);
 

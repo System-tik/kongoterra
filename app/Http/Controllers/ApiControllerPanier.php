@@ -5,24 +5,33 @@ namespace App\Http\Controllers;
 use App\Models\shoppingcart;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ApiControllerPanier extends Controller
 {
-    public function store(Request $request)
+    public function register(Request $request)
     {
         
         try {
             //validation des éléments request
-            $validate = $request->validate([
+            $rules = [
                 'client_id' => 'required',
                 'produits' => 'required',
                 'etat' => 'required'
-            ]);
+            ];
+            $validate = Validator::make($request->all(), $rules);
+            if($validate->fails()){
+                return response()->json($validate->errors(), 400);
+            }
             //creation d'un panier
-            $reque = shoppingcart::create($validate);
-            return response()->json(['panier' => $reque]);
+            $reque = shoppingcart::create([
+                'client_id' => $request->client_id,
+                'produits' => $request->produits,
+                'etat' => $request->etat
+            ]);
+            return response()->json(['panier' => $reque], 200);
         } catch (Exception $e) {
-            return response()->json(['message' => $e->getMessage()]);
+            return response()->json(['message' => $e->getMessage()], 400);
         }
     }
 
@@ -30,16 +39,23 @@ class ApiControllerPanier extends Controller
     {
         try {
             //validation des éléments request
-            $validate = $request->validate([
+            $rules = [
                 'produits' => 'required',
-                'etat' => 'required',
-            ]);
+                'etat' => 'required'
+            ];
+            $validate = Validator::make($request->all(), $rules);
+            if($validate->fails()){
+                return response()->json($validate->errors(), 400);
+            }
             //modification du panier
-            shoppingcart::find($id)->update($validate);
-            return response()->json(['message' => 'Modification effectuée']);
+            shoppingcart::findOrfail($id)->update([
+                'produits' => $request->produits,
+                'etat' => $request->etat
+            ]);
+            return response()->json(['message' => 'Modification effectuée'], 200);
             
         } catch (Exception $e) {
-            return response()->json(['message' => $e->getMessage()]);
+            return response()->json(['message' => $e->getMessage()], 400);
         }
     }
 
@@ -47,10 +63,10 @@ class ApiControllerPanier extends Controller
     {
         try {
             //suppression du panier
-            shoppingcart::find($id)->delete();
-            return response()->json(['message' => 'Suppression effectuée']);
+            shoppingcart::findOrfail($id)->delete();
+            return response()->json(['message' => 'Suppression effectuée'], 200);
         } catch (Exception $e) {
-            return response()->json(['message' => $e->getMessage()]);
+            return response()->json(['message' => $e->getMessage()], 400);
         }
     }
 

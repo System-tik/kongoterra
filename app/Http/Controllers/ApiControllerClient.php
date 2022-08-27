@@ -6,6 +6,7 @@ use App\Models\client;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class ApiControllerClient extends Controller
 {
@@ -14,12 +15,16 @@ class ApiControllerClient extends Controller
         
         try {
             //validation des éléments request
-            $validate = $request->validate([
+            $rules = [
                 'noms' => 'required',
                 'tel' => 'required',
                 'email' => 'required',
                 'mdp' => 'required'
-            ]);
+            ];
+            $validate = Validator::make($request->all(), $rules);
+            if($validate->fails()){
+                return response()->json($validate->errors(), 400);
+            }
             //creation d'un client
             $reque = client::create([
                 'noms' => $request->noms,
@@ -27,9 +32,9 @@ class ApiControllerClient extends Controller
                 'email' => $request->email,
                 'mdp' => Hash::make($request->mdp) 
             ]);
-            return response()->json(['user' => $reque]);
+            return response()->json(['user' => $reque], 200);
         } catch (Exception $e) {
-            return response()->json($e->getMessage());
+            return response()->json($e->getMessage(), 400);
         }
     }
 
@@ -37,18 +42,27 @@ class ApiControllerClient extends Controller
     {
         try {
             //validation des éléments request
-            $validate = $request->validate([
+            $rules = [
                 'noms' => 'required',
                 'tel' => 'required',
                 'email' => 'required',
                 'mdp' => 'required'
-            ]);
+            ];
+            $validate = Validator::make($request->all(), $rules);
+            if($validate->fails()){
+                return response()->json($validate->errors(), 400);
+            }
             //modification du client
-            client::find($id)->update($validate);
-            return response()->json(['message' => 'Modification effectuée']);
+            client::findOrfail($id)->update([
+                'noms' => $request->noms,
+                'tel' => $request->tel,
+                'email' => $request->email,
+                'mdp' => $request->mdp
+            ]);
+            return response()->json(['message' => 'Modification effectuée'], 200);
             
         } catch (Exception $e) {
-            return response()->json(['message' => 'Une erreur est survenue']);
+            return response()->json(['message' => 'Une erreur est survenue'], 400);
         }
     }
 
@@ -56,10 +70,10 @@ class ApiControllerClient extends Controller
     {
         try {
             //suppression du client
-            client::find($id)->delete();
-            return response()->json(['message' => 'Suppression effectuée']);
+            client::findOrfail($id)->delete();
+            return response()->json(['message' => 'Suppression effectuée'], 200);
         } catch (Exception $e) {
-            return response()->json(['message' => 'Une erreur est survenue']);
+            return response()->json(['message' => 'Une erreur est survenue'], 400);
         }
     }
 

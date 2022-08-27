@@ -56,6 +56,6 @@ Route::middleware([
     })->name('dashboard');
 });
 
-/* Route::get('/send',function (){
+Route::get('/send',function (){
     return view('form');
-}); */
+});
