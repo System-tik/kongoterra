@@ -53,6 +53,11 @@ class VProduits extends Component
     /* store data function */
     public function store(){
         try {
+            $this->validate([
+
+                'images.*' => 'image|max:5024', // 1MB Max
+    
+            ]);
             //code...
             $validate = $this->validate([
                 "nom" => 'required',
@@ -65,8 +70,11 @@ class VProduits extends Component
             /* $this->validate([
                 'galleries' => 'required'
             ]); */
+
     
             $record = produit::create($validate);
+
+            
     
             /* Sauvegarde images */
             for ($i=0; $i < count($this->galleries); $i++) { 
@@ -82,6 +90,7 @@ class VProduits extends Component
             session()->flash("message", "Enregistrement effectué avec succès");
             $this->dispatchBrowserEvent("crud");
             $this->resetInputs();
+            Storage::deleteDirectory('livewire-tmp');
         } catch (\Exception $ex) {
             //throw $th;
             dd($ex->getMessage());
