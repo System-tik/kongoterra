@@ -28,7 +28,7 @@
                 {{-- <h1 class="text-xl text-green-500">Ville : {{$produit->ville}}</h1> --}}
                 <div class="flex justify-between">
                     <h1 class="py-2 text-blue-900 sm:text-3xl">{{ $produit->nom }}</h1>
-                    <h1 class="py-2 text-blue-900 sm:text-3xl">{{$produit->prix}} FC</h1>
+                    <h1 class="py-2 text-blue-900 sm:text-3xl">{{$produit->prix}} FC</h1> 
                 </div>
                 {{-- <p class="py-3 text-xl text-gray-500">{{$produit->b}} {{$produit->an}}</p> --}}
                 <hr>
