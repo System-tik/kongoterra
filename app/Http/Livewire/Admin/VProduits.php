@@ -55,7 +55,7 @@ class VProduits extends Component
         try {
             $this->validate([
 
-                'images.*' => 'image|max:5024', // 1MB Max
+                'galleries.*' => 'image|max:5024', // 1MB Max
     
             ]);
             //code...
