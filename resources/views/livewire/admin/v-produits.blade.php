@@ -95,7 +95,7 @@
                                 class="w-full"
                                 style="height: 160px;">
                         @endif
-                        @endif
+                        @endif 
                         
                         
                         <p class="text-center">
@@ -105,6 +105,9 @@
                             <p>{{$b->description}}</p>
                             <button class="w-full px-2 py-1 bg-gray-200" @click="gallerie=true">Voir gallerie</button>
                         </div>
+                    </div>
+                    <div>
+                        <p>{{asset(str_replace('public', 'storage', $b->id.'.png'))}}</p>
                     </div>
                 @empty
                     <div class="flex items-center justify-center">

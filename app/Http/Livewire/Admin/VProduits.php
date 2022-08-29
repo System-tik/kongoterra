@@ -20,6 +20,7 @@ class VProduits extends Component
     public $descrip;
     public $prix;
     public $catp_id;
+    public $images = [];
     public $selectedID;
     public $galleries;
     public $photo;
@@ -32,7 +33,7 @@ class VProduits extends Component
     protected $listeners = ['crud'=>'$refresh'];
     
     public function render()
-    {
+    {        
         $this->produits = produit::join('catps', 'catps.id', '=', 'produits.catp_id')->get(['produits.*', 'catps.lib']);
         $this->categories = catp::all();
         return view('livewire.admin.v-produits');
@@ -45,32 +46,46 @@ class VProduits extends Component
         $this->prix = "";
         $this->catp_id = "";
         $this->selectedID = "";
+        $this->images = [];
     }
 
     /* store data function */
     public function store(){
-        $validate = $this->validate([
-            "nom" => 'required',
-            "descrip" => 'required',
-            "prix" => 'required',
-            "catp_id" => 'required',
-        ]);
-
-        /* $this->validate([
-            'galleries' => 'required'
-        ]); */
-
-        $record = produit::create($validate);
-
-        /* Sauvegarde images */
-        for ($i=0; $i < count($this->galleries); $i++) { 
-            # code...
-            $this->galleries[$i]->storePubliclyAs('public/produits/'.$record->id.'/', $i.'.png');
-            $this->emitSelf('imgUpdate');
+        try {
+            //code...
+            $validate = $this->validate([
+                "nom" => 'required',
+                "descrip" => 'required',
+                "prix" => 'required',
+                "catp_id" => 'required',
+                /* "images" => 'required' */
+            ]);
+    
+            /* $this->validate([
+                'galleries' => 'required'
+            ]); */
+    
+            $record = produit::create($validate);
+    
+            /* Sauvegarde images */
+            for ($i=0; $i < count($this->galleries); $i++) { 
+                # code...
+                $this->galleries[$i]->storePubliclyAs('public/produits/'.$record->id.'/', $i.'.png');
+                $this->emitSelf('imgUpdate');
+            }
+            foreach (Storage::files('public/produits/'.$record->id) as $img){
+    
+                array_push($this->images, asset(str_replace('public', 'storage', $img)));
+            }
+            $record->update(['images'=>$this->images]);
+            session()->flash("message", "Enregistrement effectué avec succès");
+            $this->dispatchBrowserEvent("crud");
+            $this->resetInputs();
+        } catch (\Exception $ex) {
+            //throw $th;
+            dd($ex->getMessage());
         }
-        session()->flash("message", "Enregistrement effectué avec succès");
-        $this->dispatchBrowserEvent("crud");
-        $this->resetInputs();
+        
     }
     
     /* select datas for updating */
@@ -106,6 +121,10 @@ class VProduits extends Component
     public function delete(){
         $this->validate(["selectedID" => "required"]);
         $record = produit::find($this->selectedID);
+        Storage::deleteDirectory('public/produits/'.$record->id);
+        /* foreach (Storage::files('public/produits/'.$record->id) as $name){
+            Storage::delete($name);
+        } */
         $record->delete($record);
         session()->flash("message", "Modifications effectuées avec succès");
         $this->dispatchBrowserEvent("crud");
@@ -123,6 +142,13 @@ class VProduits extends Component
     public function updateImg(){
         $name = explode('/',$this->selectedGal)[3]; //recuperer le nom du fichier et son extension seulement dans le chemin
         $this->photo->storePubliclyAs('public/produits/'.$this->selectedID.'/', $name);
+        $record = produit::find($this->selectedID);
+        foreach (Storage::files('public/produits/'.$record->id) as $img){
+
+            array_push($this->images, asset(str_replace('public', 'storage', $img)));
+        }
+        $record->update(['images'=>$this->images]);
+        $this->resetInputs();
     }
 
     public function deleteImg(){
@@ -138,6 +164,7 @@ class VProduits extends Component
             for ($i=0; $i < count($this->galleries); $i++) { 
                 # code...
                 $this->galleries[$i]->storePubliclyAs('public/produits/'.$this->selectedID.'/', $i.'.png');
+                array_push($this->images, asset(str_replace('public', 'storage', Storage::files('public/produits/'.$this->selectedID)[$i])));
                 $this->emitSelf('imgUpdate');
             }
         }
@@ -156,9 +183,17 @@ class VProduits extends Component
                 */
                 /* dd($last, $filename); */
                 $this->galleries[$i]->storePubliclyAs('public/produits/'.$this->selectedID.'/', $filename.'.png');
+                array_push($this->images, asset(str_replace('public', 'storage', Storage::files('public/produits/'.$this->selectedID)[$filename])));
                 //$this->galleries[$i]->storePubliclyAs('public/gallerie/', $record->id.'.png');
                 $this->emitSelf('imgUpdate');
             }
        }
+       $record = produit::find($this->selectedID);
+        foreach (Storage::files('public/produits/'.$record->id) as $img){
+
+            array_push($this->images, asset(str_replace('public', 'storage', $img)));
+        }
+        $record->update(['images'=>$this->images]);
+        $this->resetInputs();
     }
 }
