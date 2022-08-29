@@ -22,7 +22,7 @@ class VProduits extends Component
     public $catp_id;
     public $images = [];
     public $selectedID;
-    public $galleries;
+    public $galleries = [];
     public $photo;
     public $selectedGal;
 
@@ -68,7 +68,7 @@ class VProduits extends Component
             $record = produit::create($validate);
     
             /* Sauvegarde images */
-            for ($i=0; $i < count(array($this->galleries)); $i++) { 
+            for ($i=0; $i < count($this->galleries); $i++) { 
                 # code...
                 $this->galleries[$i]->storePubliclyAs('public/produits/'.$record->id.'/', $i.'.png');
                 $this->emitSelf('imgUpdate');
