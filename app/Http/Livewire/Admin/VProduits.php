@@ -47,6 +47,7 @@ class VProduits extends Component
         $this->catp_id = "";
         $this->selectedID = "";
         $this->images = [];
+        $this->galleries = [];
     }
 
     /* store data function */
