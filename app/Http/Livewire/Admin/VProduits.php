@@ -68,7 +68,7 @@ class VProduits extends Component
             $record = produit::create($validate);
     
             /* Sauvegarde images */
-            for ($i=0; $i < count($this->galleries); $i++) { 
+            for ($i=0; $i < count(array($this->galleries)); $i++) { 
                 # code...
                 $this->galleries[$i]->storePubliclyAs('public/produits/'.$record->id.'/', $i.'.png');
                 $this->emitSelf('imgUpdate');
@@ -161,7 +161,7 @@ class VProduits extends Component
         $b_files = Storage::files('public/produits/'.$this->selectedID);
         if(count($b_files) == 0){
              /* Sauvegarde images */
-            for ($i=0; $i < count($this->galleries); $i++) { 
+            for ($i=0; $i < count(array($this->galleries)); $i++) { 
                 # code...
                 $this->galleries[$i]->storePubliclyAs('public/produits/'.$this->selectedID.'/', $i.'.png');
                 array_push($this->images, asset(str_replace('public', 'storage', Storage::files('public/produits/'.$this->selectedID)[$i])));
