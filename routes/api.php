@@ -22,7 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 //Route all get
-Route::get('/',[ApiController::class,'index']);
+Route::get('/',[ApiController::class,'prod']);
+Route::get('/tems',[ApiController::class,'tem']);
+Route::get('/services',[ApiController::class,'serv']);
+Route::get('/magasins',[ApiController::class,'mag']);
+Route::get('/abouts',[ApiController::class,'ab']);
 
 //Routes panier
 Route::post('/panier/store',[ApiControllerPanier::class,'register'])->name('panier/store');
