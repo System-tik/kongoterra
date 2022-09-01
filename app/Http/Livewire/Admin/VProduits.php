@@ -22,7 +22,7 @@ class VProduits extends Component
     public $catp_id;
     public $images = [];
     public $selectedID;
-    public $galleries;
+    public $galleries = [];
     public $photo;
     public $selectedGal;
 
@@ -47,11 +47,17 @@ class VProduits extends Component
         $this->catp_id = "";
         $this->selectedID = "";
         $this->images = [];
+        $this->galleries = [];
     }
 
     /* store data function */
     public function store(){
         try {
+            $this->validate([
+
+                'galleries.*' => 'image|max:5024', // 1MB Max
+    
+            ]);
             //code...
             $validate = $this->validate([
                 "nom" => 'required',
@@ -64,8 +70,11 @@ class VProduits extends Component
             /* $this->validate([
                 'galleries' => 'required'
             ]); */
+
     
             $record = produit::create($validate);
+
+            
     
             /* Sauvegarde images */
             for ($i=0; $i < count($this->galleries); $i++) { 
@@ -81,6 +90,7 @@ class VProduits extends Component
             session()->flash("message", "Enregistrement effectué avec succès");
             $this->dispatchBrowserEvent("crud");
             $this->resetInputs();
+            Storage::deleteDirectory('livewire-tmp');
         } catch (\Exception $ex) {
             //throw $th;
             dd($ex->getMessage());
@@ -161,7 +171,7 @@ class VProduits extends Component
         $b_files = Storage::files('public/produits/'.$this->selectedID);
         if(count($b_files) == 0){
              /* Sauvegarde images */
-            for ($i=0; $i < count($this->galleries); $i++) { 
+            for ($i=0; $i < count(array($this->galleries)); $i++) { 
                 # code...
                 $this->galleries[$i]->storePubliclyAs('public/produits/'.$this->selectedID.'/', $i.'.png');
                 array_push($this->images, asset(str_replace('public', 'storage', Storage::files('public/produits/'.$this->selectedID)[$i])));

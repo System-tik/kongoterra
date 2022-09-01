@@ -26,15 +26,18 @@ class ApiControllerClient extends Controller
             if($validate->fails()){
                 return response()->json($validate->errors(), 400);
             }
+            $client_exist = client::where('tel', $request->tel)->orWhere('email', $request->email)->first();
+            if($client_exist === null){
+                $reque = client::create([
+                    'noms' => $request->noms,
+                    'tel' => $request->tel,
+                    'email' => $request->email,
+                    'mdp' => Hash::make($request->mdp) 
+                ]);
+                return response()->json(['user' => $reque], 200);
+            }
+            return response()->json(["message" => "duplicate"], 400);
             //creation d'un client
-            $reque = client::create([
-                'noms' => $request->noms,
-                'tel' => $request->tel,
-                'email' => $request->email,
-                'mdp' => Hash::make($request->mdp) 
-            ]);
-
-            return response()->json(['user' => $reque], 200);
         } catch (Exception $e) {
             return response()->json($e->getMessage(), 400);
         }
