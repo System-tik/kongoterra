@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\client;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -32,6 +33,7 @@ class ApiControllerClient extends Controller
                 'email' => $request->email,
                 'mdp' => Hash::make($request->mdp) 
             ]);
+
             return response()->json(['user' => $reque], 200);
         } catch (Exception $e) {
             return response()->json($e->getMessage(), 400);
@@ -91,3 +93,4 @@ class ApiControllerClient extends Controller
         }
     }
 }
+

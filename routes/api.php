@@ -30,7 +30,7 @@ Route::put('/panier/update/{id}',[ApiControllerPanier::class,'update']);
 Route::delete('/panier/delete/{id}',[ApiControllerPanier::class,'delete']);
 
 //Routes client
-Route::post('/client/store',[ApiControllerClient::class,'store'])->name('client/store');
+Route::post('/client/store',[ApiControllerClient::class,'store']);
 Route::put('/client/update/{id}',[ApiControllerClient::class,'update']);
 Route::post('/client/login',[ApiControllerClient::class,'login']);
 

@@ -21,7 +21,7 @@ class ApiControllerPanier extends Controller
             ];
             $validate = Validator::make($request->all(), $rules);
             if($validate->fails()){
-                return response()->json($validate->errors(), 400);
+                return response()->json($validate->errors(), 401);
             }
             //creation d'un panier
             $reque = shoppingcart::create([
@@ -29,9 +29,10 @@ class ApiControllerPanier extends Controller
                 'produits' => $request->produits,
                 'etat' => $request->etat
             ]);
-            return response()->json(['panier' => $reque], 200);
+            return response()->json([
+                'panier' => $reque], 200);
         } catch (Exception $e) {
-            return response()->json(['message' => $e->getMessage()], 400);
+            return response()->json(['message' => $e->getMessage()], 500);
         }
     }
 
