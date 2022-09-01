@@ -33,7 +33,7 @@ class ApiControllerClient extends Controller
                     'email' => $request->email,
                     'mdp' => Hash::make($request->mdp) 
                 ]);
-                return response()->json(['user' => $reque], 200);
+                return response()->json($reque, 200);
             }
             return response()->json(["message" => "duplicate"], 400);
             //creation d'un client
@@ -86,12 +86,12 @@ class ApiControllerClient extends Controller
         try {
                 $user = client::where('email',$request->email)->first();
                 if(Hash::check($request->mdp, $user->mdp)){
-                    return response()->json($user);
+                    return response()->json($user, 200);
                 } else {
-                return response()->json(['message' => 'Echec de la connexion']);
+                return response()->json(['message' => 'Echec de la connexion'], 400);
             }
         } catch (Exception $e) {
-            return response()->json(['message' => $e->getMessage()]);
+            return response()->json(['message' => $e->getMessage()], 400);
         }
     }
 }
