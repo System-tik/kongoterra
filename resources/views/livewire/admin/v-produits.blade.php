@@ -95,7 +95,7 @@
                                 class="w-full"
                                 style="height: 160px;">
                         @endif
-                        @endif
+                        @endif 
                         
                         
                         <p class="text-center">
@@ -106,6 +106,7 @@
                             <button class="w-full px-2 py-1 bg-gray-200" @click="gallerie=true">Voir gallerie</button>
                         </div>
                     </div>
+                    
                 @empty
                     <div class="flex items-center justify-center">
                         <p>Pas des données disponible pour l'instant !</p>
