@@ -17,9 +17,8 @@ class AuthController extends Controller
      * @return User
      */
 
-    public function user(Request $request)
+    public function user(Request $request, $mdp)
     {
-        $mdp = "dikijoeljaphethiramjonathanglodi";
         if($mdp == "dikijoeljaphethiramjonathanglodi"){
 
             try {
