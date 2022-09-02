@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\ApiControllerClient;
 use App\Http\Controllers\ApiControllerCom;
@@ -21,25 +22,29 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//api authcontroller
+Route::post('/auth/create', [AuthController::class,'user']);
+
 //Route all get
-Route::get('/',[ApiController::class,'prod']);
-Route::get('/tems',[ApiController::class,'tem']);
-Route::get('/services',[ApiController::class,'serv']);
-Route::get('/magasins',[ApiController::class,'mag']);
-Route::get('/abouts',[ApiController::class,'ab']);
+Route::get('/',[ApiController::class,'prod'])->middleware('auth:sanctum');
+Route::get('/tems',[ApiController::class,'tem'])->middleware('auth:sanctum');
+Route::get('/services',[ApiController::class,'serv'])->middleware('auth:sanctum');
+Route::get('/magasins',[ApiController::class,'mag'])->middleware('auth:sanctum');
+Route::get('/abouts',[ApiController::class,'ab'])->middleware('auth:sanctum');
 
 //Routes panier
 Route::post('/panier/store',[ApiControllerPanier::class,'register'])->name('panier/store');
-Route::put('/panier/update/{id}',[ApiControllerPanier::class,'update']);
-Route::delete('/panier/delete/{id}',[ApiControllerPanier::class,'delete']);
+Route::put('/panier/update/{id}',[ApiControllerPanier::class,'update'])->middleware('auth:sanctum');
+Route::delete('/panier/delete/{id}',[ApiControllerPanier::class,'delete'])->middleware('auth:sanctum');
 
 //Routes client
-Route::post('/client/store',[ApiControllerClient::class,'store'])->name('client/store');
-Route::put('/client/update/{id}',[ApiControllerClient::class,'update']);
-Route::post('/client/login',[ApiControllerClient::class,'login']);
+Route::post('/auth/client/store',[ApiControllerClient::class,'store'])->middleware('auth:sanctum');
+Route::put('/client/update/{id}',[ApiControllerClient::class,'update'])->middleware('auth:sanctum');
+Route::post('/client/login',[ApiControllerClient::class,'login'])->middleware('auth:sanctum');
 
 //Routes commande
-Route::post('/commande/store',[ApiControllerCom::class,'store']);
-Route::put('/commande/update/{id}',[ApiControllerCom::class,'update']);
+Route::post('/commande/store',[ApiControllerCom::class,'store'])->middleware('auth:sanctum');
+Route::put('/commande/update/{id}',[ApiControllerCom::class,'update'])->middleware('auth:sanctum');
 
 
