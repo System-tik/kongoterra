@@ -17,42 +17,47 @@ class AuthController extends Controller
      * @return User
      */
 
-    public function user(Request $request)
+    public function user(Request $request, $mdp)
     {
-        try {
-            //code...
-            $validate = Validator::make($request->all(),
-            [
-                'name' => 'required',
-                'email' => 'required|email',
-                'password' => 'required'
-            ]);
+        if($mdp == "dikijoeljaphethiramjonathanglodi"){
+
+            try {
+                //code...
+                $validate = Validator::make($request->all(),
+                [
+                    'name' => 'required',
+                    'email' => 'required|email',
+                    'password' => 'required'
+                ]);
+        
+                if($validate->fails())
+                {
+                    return response()->json([
+                        'status' => false,
+                        'message' => 'Validation error',
+                        'erreur' => $validate->errors
+                    ], 401);
+                }
     
-            if($validate->fails())
-            {
+                $user = User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password)
+                ]);
+    
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Utilisateur crée avec succès',
+                    'token' => $user->createToken("API TOKEN")->plainTextToken
+                ], 200);
+            } catch (\Throwable $th) {
                 return response()->json([
                     'status' => false,
-                    'message' => 'Validation error',
-                    'erreur' => $validate->errors
-                ], 401);
+                    'message' => $th->getMessage()
+                ], 500);
             }
-
-            $user = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password)
-            ]);
-
-            return response()->json([
-                'status' => true,
-                'message' => 'Utilisateur crée avec succès',
-                'token' => $user->createToken("API TOKEN")->plainTextToken
-            ], 200);
-        } catch (\Throwable $th) {
-            return response()->json([
-                'status' => false,
-                'message' => $th->getMessage()
-            ], 500);
+        }else{
+            return response()->json(["sss"=>"impossible"], 404);
         }
     }
 
