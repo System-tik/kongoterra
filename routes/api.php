@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //api authcontroller
-Route::post('/auth/create/{mdp}', [AuthController::class,'user']);
+Route::post('/auth/create', [AuthController::class,'user']);
 
 //Route all get
 Route::get('/',[ApiController::class,'prod'])->middleware('auth:sanctum');
