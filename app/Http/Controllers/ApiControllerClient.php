@@ -85,7 +85,7 @@ class ApiControllerClient extends Controller
     public function login(Request $request)
     {
         try {
-                $user = client::where('email',$request->email)->first();
+                $user = client::where('tel',$request->email)->first();
                 if(Hash::check($request->mdp, $user->mdp)){
                     return response()->json($user, 200);
                 } else {
