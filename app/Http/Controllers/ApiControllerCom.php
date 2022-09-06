@@ -37,7 +37,7 @@ class ApiControllerCom extends Controller
                 'panier_id' => $panier->id,
                 'etat' => "attente"
             ]);
-            return response()->json(['commande' => $reque], 200);
+            return response()->json(['message' => "ok"], 200);
         } catch (Exception $e) {
             return response()->json($e->getMessage(), 400);
         }
