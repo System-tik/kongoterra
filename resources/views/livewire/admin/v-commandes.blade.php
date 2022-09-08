@@ -26,9 +26,9 @@
     </div>
 </div>
 {{-- Commandes non livrees --}}
-<div class="grid grid-cols-4 gap-3" x-show="!c_livre">
+<div class="grid h-screen grid-cols-4 gap-3" x-show="!c_livre">
     
-    <div class="p-4 rounded bg-gray-50">
+    <div class="p-4 overflow-y-auto rounded bg-gray-50">
         <h1 class="py-2 text-xl font-bold">Liste des commandes non livrées / Clients</h1>
         <hr>
         <div class="flex flex-col w-full py-2">
@@ -55,7 +55,7 @@
                 @endforelse
         </div>
     </div>
-    <div class="flex flex-col h-full col-span-3 gap-3">
+    <div class="flex flex-col h-full col-span-3 gap-3 overflow-y-auto">
         <div class="h-full p-4 rounded bg-gray-50">
             
             <div class="flex gap-4">
