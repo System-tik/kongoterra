@@ -11,15 +11,16 @@ use Illuminate\Support\Facades\Validator;
 
 class ApiControllerClient extends Controller
 {
+    
     public function store(Request $request)
     {
         
         try {
             //validation des éléments request
             $rules = [
-                'noms' => 'required',
-                'tel' => 'required',
-                'email' => 'required',
+                'noms' => 'required|min:3|max:14',
+                'tel' => 'required|min:10|max:14',
+                'email' => 'required|email',
                 'mdp' => 'required'
             ];
             $validate = Validator::make($request->all(), $rules);
@@ -49,9 +50,9 @@ class ApiControllerClient extends Controller
             //validation des éléments request
             $rules = [
                 'noms' => 'required',
-                'tel' => 'required',
-                'email' => 'required',
-                'mdp' => 'required'
+                'tel' => 'required|min:10|max:14',
+                'email' => 'required|email',
+                'mdp' => 'required|min:3|max:25'
             ];
             $validate = Validator::make($request->all(), $rules);
             if($validate->fails()){
