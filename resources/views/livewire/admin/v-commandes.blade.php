@@ -26,7 +26,7 @@
     </div>
 </div>
 {{-- Commandes non livrees --}}
-<div class="grid grid-cols-4 gap-3" x-show="!c_livre" style="height: 90vh;">
+<div class="grid grid-cols-4 gap-3" x-show="!c_livre" style="height: 85vh;">
     
     <div class="p-4 overflow-y-auto rounded bg-gray-50">
         <h1 class="py-2 text-xl font-bold">Liste des commandes non livrées / Clients</h1>
