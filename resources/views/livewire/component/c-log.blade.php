@@ -18,6 +18,7 @@
                         </svg>
                     </div>
                     <input type="text" placeholder="Numero de contact" class="w-full text-black border-4 border-white" wire:model="tel">
+                    @error('mdp') <span class="text-red-600">{{ $message }}</span><br> @enderror
                 </div>
                 <div class="flex">
                     <div class="flex items-center justify-center px-5 border">
@@ -26,6 +27,7 @@
                         </svg>
                     </div>
                     <input type="password" placeholder="Mot de passe" class="w-full text-black border-4 border-white" wire:model="mdp">
+                    @error('mdp') <span class="text-red-600">{{ $message }}</span><br> @enderror
                 </div>
                 <div class="flex justify-end">
                     <button class="px-10 py-2 text-white bg-green-600" wire:click="connecter">
@@ -52,6 +54,7 @@
                         </svg>
                     </div>
                     <input type="text" placeholder="Nom & Prenom" class="w-full text-black border-4 border-white" wire:model="noms">
+                    @error('noms') <span class="text-red-600">{{ $message }}</span><br> @enderror
                 </div>
                 <div class="flex">
                     <div class="flex items-center justify-center px-5 border">
@@ -60,6 +63,7 @@
                         </svg>
                     </div>
                     <input type="text" placeholder="Email" class="w-full text-black border-4 border-white" wire:model="email">
+                    @error('email') <span class="text-red-600">{{ $message }}</span><br> @enderror
                 </div>
                 <div class="flex">
                     <div class="flex items-center justify-center px-5 border">
@@ -68,6 +72,7 @@
                         </svg>
                     </div>
                     <input type="text" placeholder="Numero de contact" class="w-full text-black border-4 border-white" wire:model="tel">
+                    @error('tel') <span class="text-red-600">{{ $message }}</span><br> @enderror
                 </div>
                 <div class="flex">
                     <div class="flex items-center justify-center px-5 border">
@@ -76,11 +81,10 @@
                         </svg>
                     </div>
                     <input type="password" placeholder="Mot de passe" class="w-full text-black border-4 border-white" wire:model="mdp">
+                    @error('mdp') <span class="text-red-600">{{ $message }}</span><br> @enderror
+                    
                 </div>
-                @error('noms') <p class="text-red-600">Error nom et prenom</p> @enderror
-                @error('tel') <p class="text-red-600">Error Numero de contact</p> @enderror
-                @error('email') <p class="text-red-600">Error E-mail</p> @enderror
-                @error('mdp') <p class="text-red-600">Error mot de passe</p> @enderror
+                
                 <div class="flex justify-end">
                     <button class="px-10 py-2 text-white bg-green-600" wire:click="inscrire">
                         Créer un compte

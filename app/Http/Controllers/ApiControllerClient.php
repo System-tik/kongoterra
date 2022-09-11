@@ -11,19 +11,30 @@ use Illuminate\Support\Facades\Validator;
 
 class ApiControllerClient extends Controller
 {
-    
     public function store(Request $request)
     {
-        
         try {
             //validation des éléments request
             $rules = [
-                'noms' => 'required|min:3|max:14',
+                'noms' => 'required|min:4|max:25',
                 'tel' => 'required|min:10|max:14',
                 'email' => 'required|email',
                 'mdp' => 'required'
             ];
-            $validate = Validator::make($request->all(), $rules);
+            $validate = Validator::make($request->all(), $rules, $messages = [
+                'noms.required' => 'Veuillez rensigner le nom.',
+                'noms.min' => 'le nom doit contenir plus de 4 caractères.',
+                'noms.max' => 'le nom ne doit contenir plus de 25 caractères.',
+
+                'tel.required' => 'Veuillez saisir le numéro.',
+                'tel.min' => 'Veuillez vérifier que le numéro est valide.',
+                'tel.max' => 'Veuillez vérifier que le numéro est valide.',
+        
+                'email.email' => 'Adresse email incorrecte.',
+                'email.required' => 'Veuillez saisir l\'addresse email.',
+                'mdp.required' => 'Veuiller saisir le mot de passe.'
+
+            ]);
             if($validate->fails()){
                 return response()->json($validate->errors(), 400);
             }
@@ -54,7 +65,21 @@ class ApiControllerClient extends Controller
                 'email' => 'required|email',
                 'mdp' => 'required|min:3|max:25'
             ];
-            $validate = Validator::make($request->all(), $rules);
+            $validate = Validator::make($request->all(), $rules, $messages = [
+                'noms.required' => 'Veuillez rensigner le nom.',
+                'noms.min' => 'le nom doit contenir plus de 4 caractères.',
+                'noms.max' => 'le nom ne doit contenir plus de 25 caractères.',
+
+                'tel.required' => 'Veuillez saisir le numéro.',
+                'tel.min' => 'Veuillez vérifier que le numéro est valide.',
+                'tel.max' => 'Veuillez vérifier que le numéro est valide.',
+        
+                'email.email' => 'Adresse email incorrecte.',
+                'email.required' => 'Veuillez saisir l\'addresse email.',
+                'mdp.required' => 'Veuiller saisir le mot de passe.'
+
+            ]);
+
             if($validate->fails()){
                 return response()->json($validate->errors(), 400);
             }

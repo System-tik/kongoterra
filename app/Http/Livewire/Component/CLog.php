@@ -14,6 +14,20 @@ class CLog extends Component
     public $clients;
     protected $listeners = ['reRenderParent'];
 
+    protected $messages = [
+        'noms.required' => 'Veuillez rensigner le nom.',
+        'noms.min' => 'le nom doit contenir plus de 4 caractères.',
+        'noms.max' => 'le nom ne doit contenir plus de 25 caractères.',
+
+        'tel.required' => 'Veuillez saisir le numéro.',
+        'tel.min' => 'Veuillez vérifier que le numéro est valide.',
+        'tel.max' => 'Veuillez vérifier que le numéro est valide.',
+        
+        'email.email' => 'Adresse email incorrecte.',
+        'email.required' => 'Veuillez saisir l\'addresse email.',
+        'mdp.required' => 'Veuiller saisir le mot de passe.'
+
+    ];
     
     public function render()
     {
@@ -22,10 +36,10 @@ class CLog extends Component
 
     public function inscrire(){
         $validate = $this->validate([
-            'noms'=>'required',
-            "tel"=>'required',
+            'noms'=>'required|min:4|max:25',
+            "tel"=>'required|min:10|max:14',
             "mdp"=>'required',
-            "email"=>['required', "email"]
+            "email"=>'required|email'
         ]);
         $record = client::create($validate);
         session()->put('client', $record);
@@ -36,7 +50,7 @@ class CLog extends Component
 
     public function connecter(){
         $validate = $this->validate([
-            "tel"=>'required',
+            "tel"=>'required|min:10|max:14',
             "mdp"=>'required',
         ]);
         $record = client::where([['tel',$this->tel], ['mdp', $this->mdp]])->first();
