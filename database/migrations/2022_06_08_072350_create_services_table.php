@@ -17,6 +17,7 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->string("nom");
             $table->text("descrip");
+            $table->string('soustitre');
             $table->timestamps();
         });
     }
