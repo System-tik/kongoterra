@@ -19,12 +19,35 @@
                     <label class="">Description du service</label>
                     <textarea  rows="5" class="w-full p-2 mt-2" placeholder="Description du service" wire:model="descrip"></textarea>
                 </div>
+                <div class="">
+{{-- test joël --}} <label class="">Sous titre</label>
+                    <textarea  rows="5" class="w-full p-2 mt-2" placeholder="Sous titre" wire:model="ab"></textarea>
+{{-- test joël --}}<button style="background-color: cornflowerblue" wire:click="add">ajouter</button>
+                    <button style="background-color: cornflowerblue" wire:click="delsous">SUPPRIMER</button>
+                    <button style="background-color: cornflowerblue" wire:click="upsous">Modifier</button>
+                </div>
+
+{{-- test joël --}}
+                <div class="grid grid-cols-2 gap-2">
+                    @forelse ($sous as $abt)
+                    <div class="flex p-2 cursor-pointer bg-slate-300" wire:click="edit({{$loop->index}})">
+                        <p class="flex-1">{{$abt}}</p>
+                    </div>
+                    @empty
+                        Aucun sous point
+                    @endforelse
+                </div>
+
+{{-- test joël --}}
+
+
             </div>
             <div class="grid grid-cols-2 gap-4 py-2 bg-white">
                 <button class="px-3 py-2 text-lg font-bold text-white bg-green-600" @click="modal=true;save=true;update=false;del=false">Enregistrer</button>        
                 <button class="px-3 py-2 text-lg font-bold text-white bg-yellow-600" @click="modal=true;save=false;update=true;del=false;">Modifier</button>        
                 <button class="px-3 py-2 text-lg font-bold text-white bg-red-900" @click="modal=true;save=false;update=false;del=true;">Supprimer</button>
-                <button class="text-lg font-bold text-white bg-gray-500 -3" wire:click="resetInputs" @click="descri='';titre='';id=0">Clear</button>        
+                <button class="text-lg font-bold text-white bg-gray-500 -3" wire:click="resetInputs" @click="descri='';titre='';id=0">Clear</button> 
+                <input type="file" wire:model="photo">   
             </div>
         </div>
         {{-- affichage des informations --}}
@@ -38,6 +61,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
                             </svg>
+                    
                             <p>{{ $serv->nom }}</p>
                         </div>
                         <div class="flex-1 p-4">
@@ -60,6 +84,7 @@
                 <span x-show="save">enregistrer</span>
                 <span x-show="update">modifier</span>
                 <span x-show="del">supprimer</span>
+        
             </p>
             <hr>
             <div class="flex w-full p-2">

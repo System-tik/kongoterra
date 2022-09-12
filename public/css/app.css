@@ -1320,6 +1320,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .pb-2 {
   padding-bottom: 0.5rem;
 }
+.pl-2 {
+  padding-left: 0.5rem;
+}
 .text-left {
   text-align: left;
 }
@@ -2394,12 +2397,22 @@ Ensure the default browser behavior of the `hidden` attribute.
     padding-left: 18rem;
     padding-right: 18rem;
   }
+
+  .xl\:text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
 }
 @media (min-width: 1536px) {
 
   .\32xl\:px-64 {
     padding-left: 16rem;
     padding-right: 16rem;
+  }
+
+  .\32xl\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 }
 

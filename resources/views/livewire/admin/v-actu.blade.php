@@ -17,7 +17,7 @@
     @foreach ($actus as $actu)
     <p wire:click="recupere({{ $actu }})">{{ $actu->titre }}</p>
     @endforeach
-        
+
     <script>
         window.addEventListener('confirm',event => {
             console.log(event.detail.message);
