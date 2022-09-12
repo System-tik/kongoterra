@@ -20,7 +20,7 @@
         
         <div class="grid grid-cols-4 gap-5">
             <div class="bg-gray-200">
-                <livewire:component.stats.st3 >
+                <livewire:component.stats.st3 text="bomjour" >
             </div>
             <div class="bg-gray-200">
                 <livewire:component.stats.st3 >

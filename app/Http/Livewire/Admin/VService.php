@@ -4,12 +4,18 @@ namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\service;
+use Livewire\WithFileUploads;
 
 class VService extends Component
 {
+    use WithFileUploads;
+
     public $nom;
     public $descrip;
+    public $soustitre;
+    public $photo;
     public $services;
+
     public function render()
     {
         $this->services = service::all();
@@ -20,6 +26,7 @@ class VService extends Component
     public function resetInputs(){
         $this->nom = "";
         $this->descrip = "";
+        $this->soustitre="";
         $this->selectedID = "";
     }
 
@@ -28,9 +35,12 @@ class VService extends Component
         $validate = $this->validate([
             "nom" => 'required',
             "descrip" => 'required',
+            "soustitre"=>'required',
+            "photo"=>'required'
         ]);
 
-        service::create($validate);
+        $record=service::create($validate);
+        $this->photo->storePubliclyAs('public/service', $record->id.'.png');
         session()->flash("message", "Enregistrement effectué avec succès");
         $this->dispatchBrowserEvent("crud");
         $this->resetInputs();
@@ -40,6 +50,8 @@ class VService extends Component
     public function fillInputs($data){
         $this->nom = $data["nom"];
         $this->descrip = $data["descrip"];
+        $this->soustitre=$data["soustitre"];
+
         $this->selectedID = $data["id"];
     }
 
@@ -48,12 +60,14 @@ class VService extends Component
         $validate = $this->validate([
             "nom" => 'required',
             "descrip" => 'required',
+            "soustitre"=>'required'
         ]);
 
         $record = service::find($this->selectedID);
         $record->update([
             "nom" => $this->nom,
             "descrip" => $this->descrip,
+            "soustitre"=>$this->soustitre
         ]);
         session()->flash("message", "Modifications effectuées avec succès");
         $this->dispatchBrowserEvent("crud");
