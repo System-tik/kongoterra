@@ -8,7 +8,7 @@
 </head>
 @livewireStyles
 <body>
-    <livewire:component.c-log />
+    <livewire:admin.v-actu/>
     
 @livewireScripts
 </body>

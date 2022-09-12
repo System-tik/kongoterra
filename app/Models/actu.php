@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class actu extends Model
 {
     use HasFactory;
-    protected $fillable = ["titre", "descrip", "video"];
+    protected $fillable = ["titre", "descrip", "lien","source"];
 }
