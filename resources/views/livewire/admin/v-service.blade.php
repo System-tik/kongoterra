@@ -20,9 +20,27 @@
                     <textarea  rows="5" class="w-full p-2 mt-2" placeholder="Description du service" wire:model="descrip"></textarea>
                 </div>
                 <div class="">
-                    <label class="">Sous titre</label>
-                    <textarea  rows="5" class="w-full p-2 mt-2" placeholder="Sous titre" wire:model="soustitre"></textarea>
+{{-- test joël --}} <label class="">Sous titre</label>
+                    <textarea  rows="5" class="w-full p-2 mt-2" placeholder="Sous titre" wire:model="ab"></textarea>
+{{-- test joël --}}<button style="background-color: cornflowerblue" wire:click="add">ajouter</button>
+                    <button style="background-color: cornflowerblue" wire:click="delsous">SUPPRIMER</button>
+                    <button style="background-color: cornflowerblue" wire:click="upsous">Modifier</button>
                 </div>
+
+{{-- test joël --}}
+                <div class="grid grid-cols-2 gap-2">
+                    @forelse ($sous as $abt)
+                    <div class="flex p-2 cursor-pointer bg-slate-300" wire:click="edit({{$loop->index}})">
+                        <p class="flex-1">{{$abt}}</p>
+                    </div>
+                    @empty
+                        Aucun sous point
+                    @endforelse
+                </div>
+
+{{-- test joël --}}
+
+
             </div>
             <div class="grid grid-cols-2 gap-4 py-2 bg-white">
                 <button class="px-3 py-2 text-lg font-bold text-white bg-green-600" @click="modal=true;save=true;update=false;del=false">Enregistrer</button>        
@@ -38,7 +56,6 @@
             <hr>
             <div class="grid w-full grid-cols-2 gap-4 py-3">
                 @forelse ($services as $serv)
-                <img src="{{asset('public/service/')}}" alt="">
                     <div class="flex flex-col rounded shadow cursor-pointer" wire:click="fillInputs({{$serv}})">
                         <div class="flex items-center justify-between p-4 text-white bg-slate-500">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
