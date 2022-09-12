@@ -17,7 +17,8 @@ class CreateActusTable extends Migration
             $table->id();
             $table->string("titre");
             $table->text("descrip");
-            $table->string("video")->nullable($value = true);
+            $table->string("lien")->nullable($value = true);
+            $table->string("source");
             $table->timestamps();
         });
     }
