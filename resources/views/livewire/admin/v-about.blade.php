@@ -79,7 +79,7 @@
                 <button class="px-3 py-2 text-lg font-bold text-white bg-yellow-600" @click="modal=true;save=false;update=true;del=false;">Modifier</button>        
                 <button class="px-3 py-2 text-lg font-bold text-white bg-red-900" @click="modal=true;save=false;update=false;del=true;">Supprimer</button>
                 <button class="text-lg font-bold text-white bg-gray-500 -3" wire:click="resetInputs" @click="descri='';titre='';id=0">Clear</button> 
-                <button class="col-span-2 py-2 text-lg font-bold text-white bg-gray-500" wire:click="resetInputs" @click="descri='';titre='';id=0">Clear sous-point</button>
+                <button class="col-span-2 py-2 text-lg font-bold text-white bg-gray-500" wire:click="delallsous" @click="descri='';titre='';id=0">Clear sous-point</button>
             </div>
         </div>
         {{-- affichage des informations --}}
