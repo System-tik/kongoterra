@@ -16,8 +16,15 @@
 
     @foreach ($actus as $actu)
     <p wire:click="recupere({{ $actu }})">{{ $actu->titre }}</p>
+    <iframe width="849" height="478" 
+        src="https://www.youtube.com/embed/{{ $actu->lien}}" 
+        title="La Raison Pour Laquelle Mbappe Déteste Neymar et Messi" 
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+        </iframe>   
+
     @endforeach
-        
+
     <script>
         window.addEventListener('confirm',event => {
             console.log(event.detail.message);
