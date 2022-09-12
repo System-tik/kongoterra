@@ -49,6 +49,28 @@ class VAbout extends Component
         
     }
 
+    public function delallsous()
+    {
+        $this->sous = [];
+        $validate = $this->validate([
+            "titre" => 'required',
+            "descrip" => 'required',
+            "sous" => 'nullable',
+        ]);
+
+        $record = about::find($this->selectedID);
+        $record->update([
+            "titre" => $this->titre,
+            "descrip" => $this->descrip,
+            "sous" => $this->sous,
+        ]);
+        session()->flash("message", "Modifications effectuées avec succès");
+        $this->dispatchBrowserEvent("crud");
+        $this->resetInputs();
+        /* dd($this->sous); */
+
+    }
+
     /* Reset inputs */
     public function resetInputs(){
         $this->titre = "";
