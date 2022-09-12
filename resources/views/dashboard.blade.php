@@ -14,8 +14,8 @@
             }
         }
     }">
-        <div class="px-10">
-            <div class="flex items-center shrink-0">
+        <div class="px-10 py-2">
+            <div class="flex items-center shrink-0 ">
                 {{-- <a href="{{ route('dashboard') }}">
                     <x-jet-application-mark class="block w-auto h-9" />
                 </a> --}}
@@ -26,8 +26,8 @@
                 <div class="px-2">
                     <h1 class="text-lg font-bold ">Kongoterra Admin</h1>
                 </div>
-                <div class="flex items-center justify-center flex-1 px-2 border-l border-r">
-                    <img src="{{ asset('img/logo/logo.jpeg') }}" alt="" srcset="" class="w-24 ">
+                <div class="flex flex-1 px-2 border-l border-r">
+                    <img src="{{ asset('img/logo/logo.png') }}" alt="" srcset="" class="w-12 ">
                 </div>
                 <div class="relative ml-3">
                     <x-jet-dropdown align="right" width="48">

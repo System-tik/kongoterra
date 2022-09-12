@@ -17,6 +17,7 @@ class CreateProduitsTable extends Migration
             $table->id();
             $table->string("nom");
             $table->text("descrip")->nullable($value = true);
+            $table->json("images")->nullable($value = true);
             $table->decimal("prix");
             $table->integer("catp_id")->nullable($value = true);
             $table->timestamps();

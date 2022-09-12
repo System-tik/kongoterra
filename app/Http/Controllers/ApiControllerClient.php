@@ -3,33 +3,55 @@
 namespace App\Http\Controllers;
 
 use App\Models\client;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class ApiControllerClient extends Controller
 {
     public function store(Request $request)
     {
-        
         try {
             //validation des éléments request
-            $validate = $request->validate([
-                'noms' => 'required',
-                'tel' => 'required',
-                'email' => 'required',
+            $rules = [
+                'noms' => 'required|min:4|max:25',
+                'tel' => 'required|min:10|max:14',
+                'email' => 'required|email',
                 'mdp' => 'required'
+            ];
+            $validate = Validator::make($request->all(), $rules, $messages = [
+                'noms.required' => 'Veuillez rensigner le nom.',
+                'noms.min' => 'le nom doit contenir plus de 4 caractères.',
+                'noms.max' => 'le nom ne doit contenir plus de 25 caractères.',
+
+                'tel.required' => 'Veuillez saisir le numéro.',
+                'tel.min' => 'Veuillez vérifier que le numéro est valide.',
+                'tel.max' => 'Veuillez vérifier que le numéro est valide.',
+        
+                'email.email' => 'Adresse email incorrecte.',
+                'email.required' => 'Veuillez saisir l\'addresse email.',
+                'mdp.required' => 'Veuiller saisir le mot de passe.'
+
             ]);
+            if($validate->fails()){
+                return response()->json($validate->errors(), 400);
+            }
+            $client_exist = client::where('tel', $request->tel)->orWhere('email', $request->email)->first();
+            if($client_exist === null){
+                $reque = client::create([
+                    'noms' => $request->noms,
+                    'tel' => $request->tel,
+                    'email' => $request->email,
+                    'mdp' => Hash::make($request->mdp) 
+                ]);
+                return response()->json($reque, 200);
+            }
+            return response()->json(["message" => "duplicate"], 400);
             //creation d'un client
-            $reque = client::create([
-                'noms' => $request->noms,
-                'tel' => $request->tel,
-                'email' => $request->email,
-                'mdp' => Hash::make($request->mdp) 
-            ]);
-            return response()->json(['user' => $reque]);
         } catch (Exception $e) {
-            return response()->json($e->getMessage());
+            return response()->json($e->getMessage(), 400);
         }
     }
 
@@ -37,18 +59,41 @@ class ApiControllerClient extends Controller
     {
         try {
             //validation des éléments request
-            $validate = $request->validate([
+            $rules = [
                 'noms' => 'required',
-                'tel' => 'required',
-                'email' => 'required',
-                'mdp' => 'required'
+                'tel' => 'required|min:10|max:14',
+                'email' => 'required|email',
+                'mdp' => 'required|min:3|max:25'
+            ];
+            $validate = Validator::make($request->all(), $rules, $messages = [
+                'noms.required' => 'Veuillez rensigner le nom.',
+                'noms.min' => 'le nom doit contenir plus de 4 caractères.',
+                'noms.max' => 'le nom ne doit contenir plus de 25 caractères.',
+
+                'tel.required' => 'Veuillez saisir le numéro.',
+                'tel.min' => 'Veuillez vérifier que le numéro est valide.',
+                'tel.max' => 'Veuillez vérifier que le numéro est valide.',
+        
+                'email.email' => 'Adresse email incorrecte.',
+                'email.required' => 'Veuillez saisir l\'addresse email.',
+                'mdp.required' => 'Veuiller saisir le mot de passe.'
+
             ]);
+
+            if($validate->fails()){
+                return response()->json($validate->errors(), 400);
+            }
             //modification du client
-            client::find($id)->update($validate);
-            return response()->json(['message' => 'Modification effectuée']);
+            client::findOrfail($id)->update([
+                'noms' => $request->noms,
+                'tel' => $request->tel,
+                'email' => $request->email,
+                'mdp' => $request->mdp
+            ]);
+            return response()->json(['message' => 'Modification effectuée'], 200);
             
         } catch (Exception $e) {
-            return response()->json(['message' => 'Une erreur est survenue']);
+            return response()->json(['message' => 'Une erreur est survenue'], 400);
         }
     }
 
@@ -56,24 +101,25 @@ class ApiControllerClient extends Controller
     {
         try {
             //suppression du client
-            client::find($id)->delete();
-            return response()->json(['message' => 'Suppression effectuée']);
+            client::findOrfail($id)->delete();
+            return response()->json(['message' => 'Suppression effectuée'], 200);
         } catch (Exception $e) {
-            return response()->json(['message' => 'Une erreur est survenue']);
+            return response()->json(['message' => 'Une erreur est survenue'], 400);
         }
     }
 
     public function login(Request $request)
     {
         try {
-                $user = client::where('email',$request->email)->first();
+                $user = client::where('tel',$request->tel)->first();
                 if(Hash::check($request->mdp, $user->mdp)){
-                    return response()->json($user);
+                    return response()->json($user, 200);
                 } else {
-                return response()->json(['message' => 'Echec de la connexion']);
+                return response()->json(['message' => 'Echec de la connexion'], 400);
             }
         } catch (Exception $e) {
-            return response()->json(['message' => $e->getMessage()]);
+            return response()->json(['message' => $e->getMessage()], 400);
         }
     }
 }
+
