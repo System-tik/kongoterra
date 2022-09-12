@@ -45,7 +45,7 @@
         <div class="col-span-2 p-4 rounded bg-gray-50">
             <h1 class="py-2 text-xl font-bold">Informations de Kongoterra</h1>
             <hr>
-            <div class="grid w-full grid-cols-4 gap-4 py-3">
+            <div class="grid w-full grid-cols-2 gap-4 py-3">
                 @forelse ($infos as $inf)
                     <div class="flex rounded shadow cursor-pointer " wire:click="fillInputs({{$inf}})">
                         <div class="flex items-center justify-center p-4 text-white bg-slate-500">

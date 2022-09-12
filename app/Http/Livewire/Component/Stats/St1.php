@@ -15,7 +15,8 @@ class St1 extends Component
         return view('livewire.component.stats.st1');
     }
 
-    public function mount($icon, $text, $val, $color){
+    public function mount($icon, $text, $val, $color)
+    {
         $this->icon = $icon;
         $this->text = $text;
         $this->val = $val;

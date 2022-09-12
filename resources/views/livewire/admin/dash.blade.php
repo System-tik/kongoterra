@@ -15,24 +15,19 @@
                 <livewire:component.stats.st2 text="MAGASINS" val="100" color="slate" bg="gray" icon="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
             </div>
         </div>
-        <div class="grid grid-cols-6 gap-5">
+        
+        <div class="grid grid-cols-4 gap-5">
             <div class="bg-gray-200">
-                jfjfj
+                <livewire:component.stats.st3 >
             </div>
             <div class="bg-gray-200">
-                jfjfj
+                <livewire:component.stats.st3 >
             </div>
             <div class="bg-gray-200">
-                jfjfj
+                <livewire:component.stats.st3 >
             </div>
             <div class="bg-gray-200">
-                jfjfj
-            </div>
-            <div class="bg-gray-200">
-                jfjfj
-            </div>
-            <div class="bg-gray-200">
-                jfjfj
+                <livewire:component.stats.st3 >
             </div>
         </div>
         

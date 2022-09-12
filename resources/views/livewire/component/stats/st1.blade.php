@@ -14,6 +14,5 @@
             <p class="px-2">{{ $text }}</p>
             <p class="px-2 py-3 bg-{{$color}}-500">{{ $val }}</p>
         </div>
-        
     </div>
 </div>
