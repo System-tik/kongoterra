@@ -84,7 +84,7 @@
         </div>
         <div class="flex w-full gap-2 px-10 pt-4 pb-32 text-white bg-gradient-to-r from-green-900 to-green-400">
             @foreach ($menus as $menu)    
-            <div class="flex items-center justify-center gap-2 pr-3 transition duration-200 transform border-r border-gray-700 cursor-pointer hover:text-gray-400 hover:scale-95" @click="afficher({{$loop->index}})">
+            <div class="flex text-sm items-center justify-center gap-2 pr-3 transition duration-200 transform border-r border-gray-700 cursor-pointer hover:text-gray-400 hover:scale-95" @click="afficher({{$loop->index}})">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="{{ $menu["icon"]}}" />
                 </svg>

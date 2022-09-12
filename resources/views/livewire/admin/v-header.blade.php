@@ -41,7 +41,7 @@
                     </div>
                 @empty
                     <div class="flex items-center justify-center">
-                        <p>Pas des données disponible pour l'instant !</p>
+                        <p>Pas des données disponibles pour l'instant !</p>
                     </div>
                 @endforelse
             </div>
