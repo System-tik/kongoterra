@@ -6,7 +6,7 @@
     </x-slot> --}}
 
     <div class="flex flex-col min-h-screen" x-data="{
-        menus : [true, false, false, false, false, false, false, false, false],
+        menus : [true, false, false, false, false, false, false, false, false, false],
         afficher(index){
             for (let i = 0; i < this.menus.length; i++){
                 if (i == index) this.menus[i] = true
@@ -96,32 +96,35 @@
         </div>
         <div class="flex flex-col items-center flex-1 h-full px-10 ">
             <div class="relative flex-1 w-full h-full -top-28">
-                <div x-show="menus[0]" class="animate__backInDown animate">
+                <div x-show="menus[0]" class="animate__animated animate__bounceInRight">
                     <livewire:admin.dash />
                 </div>
-                <div x-show="menus[1]">
+                <div x-show="menus[1]" class="animate__animated animate__bounceInRight">
                     <livewire:admin.v-info />
                 </div>
-                <div x-show="menus[2]">
+                <div x-show="menus[2]" class="animate__animated animate__bounceInRight">
                     <livewire:admin.v-header />
                 </div>
-                <div x-show="menus[3]">
+                <div x-show="menus[3]" class="animate__animated animate__bounceInRight">
                     <livewire:admin.v-about />
                 </div>
-                <div x-show="menus[4]">
+                <div x-show="menus[4]" class="animate__animated animate__bounceInRight">
                     <livewire:admin.v-service />
                 </div>
-                <div x-show="menus[5]">
+                <div x-show="menus[5]" class="animate__animated animate__bounceInRight">
                     <livewire:admin.v-produits />
                 </div>
-                <div x-show="menus[6]">
+                <div x-show="menus[6]" class="animate__animated animate__bounceInRight">
                     <livewire:admin.v-magasin />
                 </div>
-                <div x-show="menus[7]">
+                <div x-show="menus[7]" class="animate__animated animate__bounceInRight">
                     <livewire:admin.v-commandes />
                 </div>
-                <div x-show="menus[8]">
+                <div x-show="menus[8]" class="animate__animated animate__bounceInRight">
                     <livewire:admin.prov-ville />
+                </div>
+                <div x-show="menus[9]">
+                    <livewire:admin.v-actu>
                 </div>
             </div>
         </div>

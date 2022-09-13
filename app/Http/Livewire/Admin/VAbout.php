@@ -26,6 +26,7 @@ class VAbout extends Component
 
     /* Add sous point */
     public function add(){
+        
         array_push($this->sous, $this->ab);
         $this->ab = "";
     }
