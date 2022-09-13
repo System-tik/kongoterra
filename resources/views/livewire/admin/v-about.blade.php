@@ -123,7 +123,6 @@
                                         <p class=""># {{ $s }}</p>
                                     @endforeach
                                 </div>
-                               
                                 @endif
                             </div>
 
