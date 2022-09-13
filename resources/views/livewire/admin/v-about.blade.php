@@ -6,7 +6,7 @@
     del : false,
     notifU : false,
     init(){
-        console.log(this.notifU);
+        //console.log(this.notifU);
         window.addEventListener('crud', event => {
             setTimeout(() => {
                 this.notifU = true;
@@ -82,11 +82,26 @@
             </div>
         </div>
         {{-- affichage des informations --}}
-        <div class="col-span-2 p-4 overflow-y-auto rounded bg-gray-50" style="height: 80vh;">
+        <div class="col-span-2 p-4 overflow-y-auto rounded bg-gray-50" style="height: 80vh;"
+         x-data="{
+            accords : [],
+            init(nbr){
+                this.accords = Array.from({length : nbr}, ()=> false)   
+            },
+            afficher(v){
+                this.accords[v] = !this.accords[v]
+                for(var i = 0; i < this.accords.length; i++){
+                    if(i !== v){
+                        this.accords[i] = false
+                    }
+                }
+            }
+         }" x-init="init({{count($abouts)}})">
             <h1 class="py-2 text-xl font-bold">Informations de Kongoterra</h1>
             <hr>
             <div class="grid w-full grid-cols-2 gap-4 py-3">
                 @forelse ($abouts as $inf)
+                
                     <div class="flex rounded shadow cursor-pointer" wire:click="fillInputs({{$inf}})">
                         {{-- <div class="flex items-center justify-center p-4 text-white bg-slate-500">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
@@ -96,17 +111,22 @@
                             </svg>
                         </div> --}}
                         <div class="flex-1 px-2">
-                            <p class="py-1 pl-2 text-white border-b bg-slate-500"><b>{{ $inf->titre }}</b></p>
-                            <p class="text-justify">{{ $inf->descrip }}</p>
-                            @if ($inf->sous)
-                            <div class="flex flex-col">
-                                <h1 class="font-bold">Sous points :</h1>
-                                <hr>
-                                @foreach ($inf->sous as $s)
-                                    <p class=""># {{ $s }}</p>
-                                @endforeach
+                            <p class="py-1 pl-2 text-white border-b bg-slate-500" @click="afficher({{$loop->index}})"><b>{{ $inf->titre }}</b></p>
+
+                            <div x-show="accords[{{$loop->index}}]" class="animate__animated animate__fadeInDown">
+                                <p class="text-justify">{{ $inf->descrip }}</p>
+                                @if ($inf->sous)
+                                <div class="flex flex-col">
+                                    <h1 class="font-bold">Sous points :</h1>
+                                    <hr>
+                                    @foreach ($inf->sous as $s)
+                                        <p class=""># {{ $s }}</p>
+                                    @endforeach
+                                </div>
+                               
+                                @endif
                             </div>
-                            @endif
+
                         </div>
                     </div>
                 @empty
@@ -141,5 +161,11 @@
             <button>X</button>
         </div>
     </div>
+    
+</div>
+
+
+
+<div>
     
 </div>

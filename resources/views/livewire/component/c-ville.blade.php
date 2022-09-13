@@ -40,10 +40,10 @@
                 </div>
             </div>
             <div class="grid grid-cols-2 gap-4 py-2 bg-white">
-                <button class="px-3 py-2 text-lg font-bold text-white bg-green-600" @click="modal=true;save=true;update=false;del=false">Enregistrer</button>        
-                <button class="px-3 py-2 text-lg font-bold text-white bg-yellow-600" @click="modal=true;save=false;update=true;del=false;">Modifier</button>        
-                <button class="px-3 py-2 text-lg font-bold text-white bg-red-900" @click="modal=true;save=false;update=false;del=true;">Supprimer</button>
-                <button class="text-lg font-bold text-white bg-gray-500 -3" wire:click="resetInputs" @click="descri='';titre='';id=0">Clear</button>        
+                <button class="py-2 text-xs font-bold text-white bg-green-600" @click="modal=true;save=true;update=false;del=false">Enregistrer</button>        
+                <button class="py-2 text-xs font-bold text-white bg-yellow-600" @click="modal=true;save=false;update=true;del=false;">Modifier</button>        
+                <button class="py-2 text-xs font-bold text-white bg-red-900" @click="modal=true;save=false;update=false;del=true;">Supprimer</button>
+                <button class="text-xs font-bold text-white bg-gray-500 -3" wire:click="resetInputs" @click="descri='';titre='';id=0">Clear</button>        
             </div>
         </div>
         {{-- affichage des informations --}}

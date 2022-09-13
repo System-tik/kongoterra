@@ -21,7 +21,7 @@
                 </div>
                 <div class="flex flex-col">
                     <label class="">Type</label>
-                    <select name="" id="" wire:model="type" class="w-full">
+                    <select name="" id="" wire:model="type" class="w-full bg-white">
                         <option value="Tel">Tel</option>
                         <option value="Email">Email</option>
                         <option value="Lien">Lien</option>
