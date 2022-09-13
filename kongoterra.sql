@@ -138,7 +138,7 @@ CREATE TABLE `clients` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `clients_tel_unique` (`tel`),
   UNIQUE KEY `clients_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -305,7 +305,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -314,7 +314,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (37,'2014_10_12_000000_create_users_table',1),(38,'2014_10_12_100000_create_password_resets_table',1),(39,'2014_10_12_200000_add_two_factor_columns_to_users_table',1),(40,'2019_08_19_000000_create_failed_jobs_table',1),(41,'2019_12_14_000001_create_personal_access_tokens_table',1),(42,'2022_06_08_065439_create_sessions_table',1),(46,'2022_06_08_072104_create_catps_table',1),(50,'2022_06_08_072249_create_actus_table',1),(51,'2022_06_08_072329_create_infos_table',1),(52,'2022_06_08_072338_create_headers_table',1),(53,'2022_06_08_072350_create_services_table',1),(54,'2022_06_08_074138_create_villes_table',1),(55,'2022_06_08_074209_create_provinces_table',1),(58,'2022_06_08_072014_create_abouts_table',2),(59,'2022_06_08_072149_create_produits_table',3),(61,'2022_06_08_072047_create_magasins_table',4),(63,'2022_06_08_072030_create_clients_table',6),(64,'2022_06_13_064628_create_adhesions_table',7),(69,'2022_06_08_072204_create_commandes_table',9),(70,'2022_06_24_113337_create_shoppingcarts_table',10),(75,'2022_06_08_072238_create_temoignages_table',11);
+INSERT INTO `migrations` VALUES (37,'2014_10_12_000000_create_users_table',1),(38,'2014_10_12_100000_create_password_resets_table',1),(39,'2014_10_12_200000_add_two_factor_columns_to_users_table',1),(40,'2019_08_19_000000_create_failed_jobs_table',1),(41,'2019_12_14_000001_create_personal_access_tokens_table',1),(42,'2022_06_08_065439_create_sessions_table',1),(46,'2022_06_08_072104_create_catps_table',1),(50,'2022_06_08_072249_create_actus_table',1),(51,'2022_06_08_072329_create_infos_table',1),(52,'2022_06_08_072338_create_headers_table',1),(53,'2022_06_08_072350_create_services_table',1),(54,'2022_06_08_074138_create_villes_table',1),(55,'2022_06_08_074209_create_provinces_table',1),(58,'2022_06_08_072014_create_abouts_table',2),(61,'2022_06_08_072047_create_magasins_table',4),(63,'2022_06_08_072030_create_clients_table',6),(64,'2022_06_13_064628_create_adhesions_table',7),(69,'2022_06_08_072204_create_commandes_table',9),(70,'2022_06_24_113337_create_shoppingcarts_table',10),(75,'2022_06_08_072238_create_temoignages_table',11),(76,'2022_06_08_072149_create_produits_table',12);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -362,7 +362,7 @@ CREATE TABLE `personal_access_tokens` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -371,6 +371,7 @@ CREATE TABLE `personal_access_tokens` (
 
 LOCK TABLES `personal_access_tokens` WRITE;
 /*!40000 ALTER TABLE `personal_access_tokens` DISABLE KEYS */;
+INSERT INTO `personal_access_tokens` VALUES (1,'App\\Models\\User',2,'API TOKEN','e432276fc8732efd6aae72c2a0bc775e2e9d222c9ba15ba4504a2486e03959dd','[\"*\"]',NULL,'2022-09-02 14:09:20','2022-09-02 14:09:20'),(2,'App\\Models\\User',3,'API TOKEN','dc252db8f993577321a9512cb566bb19254d56bbc83a0d843e6f946a4ba0e1dc','[\"*\"]',NULL,'2022-09-02 14:16:13','2022-09-02 14:16:13'),(3,'App\\Models\\User',4,'API TOKEN','a6751116c4b345b6ab4bdfdc0de5388ae173d0a3f4262fc1a7a8e9c0bf1d2a79','[\"*\"]',NULL,'2022-09-02 14:25:52','2022-09-02 14:25:52');
 /*!40000 ALTER TABLE `personal_access_tokens` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -385,12 +386,13 @@ CREATE TABLE `produits` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `descrip` text COLLATE utf8mb4_unicode_ci,
+  `images` json DEFAULT NULL,
   `prix` decimal(8,2) NOT NULL,
   `catp_id` int DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -399,7 +401,6 @@ CREATE TABLE `produits` (
 
 LOCK TABLES `produits` WRITE;
 /*!40000 ALTER TABLE `produits` DISABLE KEYS */;
-INSERT INTO `produits` VALUES (1,'Clou de girofle','Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum obcaecati accusantium atque! Pariatur, voluptate voluptas quas dignissimos labore assumenda culpa ea veritatis, reiciendis modi dolorum optio commodi debitis aperiam vero.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum obcaecati accusantium atque! Pariatur, voluptate voluptas quas dignissimos labore assumenda culpa ea veritatis, reiciendis modi dolorum optio commodi debitis aperiam vero.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum obcaecati accusantium atque! Pariatur, voluptate voluptas quas dignissimos labore assumenda culpa ea veritatis, reiciendis modi dolorum optio commodi debitis aperiam vero.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum obcaecati accusantium atque! Pariatur, voluptate voluptas quas dignissimos labore assumenda culpa ea veritatis, reiciendis modi dolorum optio commodi debitis aperiam vero.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum obcaecati accusantium atque! Pariatur, voluptate voluptas quas dignissimos labore assumenda culpa ea veritatis, reiciendis modi dolorum optio commodi debitis aperiam vero.',5.50,1,'2022-06-13 04:54:52','2022-08-15 05:38:40'),(2,'Miel','Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum obcaecati accusantium atque! Pariatur, voluptate voluptas quas dignissimos labore assumenda culpa ea veritatis, reiciendis modi dolorum optio commodi debitis aperiam vero.',66.50,1,'2022-06-13 05:24:51','2022-08-15 05:39:26'),(3,'Poudre','Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum obcaecati accusantium atque! Pariatur, voluptate voluptas quas dignissimos labore assumenda culpa ea veritatis, reiciendis modi dolorum optio commodi debitis aperiam vero.',800.00,1,'2022-06-22 08:03:27','2022-08-15 05:40:01'),(4,'Tisane bio','Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum obcaecati accusantium atque! Pariatur, voluptate voluptas quas dignissimos labore assumenda culpa ea veritatis, reiciendis modi dolorum optio commodi debitis aperiam vero.',1400.00,1,'2022-06-22 08:04:06','2022-08-15 05:40:46');
 /*!40000 ALTER TABLE `produits` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -482,7 +483,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('09jtSnlYtisI0V5smguOJCyOzRqEBJDert2bLRjy',NULL,'192.168.137.173','Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1','YTozOntzOjY6Il90b2tlbiI7czo0MDoiYk5jYURtNEpPWUpLbHN5dXB4cnRMcnI3VnhXaWRHeW9TZVdoaUZFUyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xOTIuMTY4LjEzNy4xNzM6ODAwMC9tb2JpbGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19',1660976133),('o7Deg4omBm5tZqvsfPeUNnYWFVxnDrqKuwZ92ZhN',NULL,'192.168.137.173','Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0','YTozOntzOjY6Il90b2tlbiI7czo0MDoiOFNId0xWWjFnUXhjYjRld3VGOGw3M2N0cGdXSVZONGNndFZYVmVmQSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xOTIuMTY4LjEzNy4xNzM6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1660973042);
+INSERT INTO `sessions` VALUES ('7Fy1tI4PB5Occ4aMpChfeSQv5BgfsHah7g29xMFq',1,'127.0.0.1','Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0','YTo2OntzOjY6Il90b2tlbiI7czo0MDoiakVySFZ3NTFqZnVEVm1mV1lRRENWVTNVZEwyTHpGUWZUN3FEQks0USI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM0OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvPzE2NzExNTI1Mjg9Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCQ3THEwRnVuM0hhNlNjUU5kbmpOWUZ1VVFOczB0QTZuZ1djNnM4Vy5wSHpDZkRWMnB3c2NFLiI7fQ==',1662989425),('KSAFGKES9HRVmxSIwMhTIewV8vmfy4uL0otiT05o',NULL,'127.0.0.1','Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0','YTozOntzOjY6Il90b2tlbiI7czo0MDoiOURLSFhrNnViQjVtYTdscFdlaUlZNGdnS1F4dVd3MXlxTThHQXZRTSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1662743491),('roOho3K9lYy2pWNwJMzwYRKPXizhhpj3KTWZVHGb',NULL,'127.0.0.1','Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0','YTozOntzOjY6Il90b2tlbiI7czo0MDoiR2hsSDRYZWlZM3l0bVdPSUNZQ0QxOWNjVXloUmFsZGZiU1p4SFdPWCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1662673320),('ScNcgTLieVKPaamCTcfH48imPYxR0RRuzitw2VsB',1,'127.0.0.1','Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiTFdnSFFBZk42bTJkaFI0bFE5VXZwNHQzNmtHYVpSMFJ0YU5YV1FpeCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC8/NjgzMDc5MDg2PSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkN0xxMEZ1bjNIYTZTY1FOZG5qTllGdVVRTnMwdEE2bmdXYzZzOFcucEh6Q2ZEVjJwd3NjRS4iO30=',1662953964);
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -593,7 +594,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -602,7 +603,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'glodi','glodi@kongo.org',NULL,'$2y$10$7Lq0Fun3Ha6ScQNdnjNYFuUQNs0tA6ngWc6s8W.pHzCfDV2pwscE.',NULL,NULL,NULL,NULL,NULL,NULL,'2022-06-10 10:05:18','2022-06-10 10:05:18');
+INSERT INTO `users` VALUES (1,'glodi','glodi@kongo.org',NULL,'$2y$10$7Lq0Fun3Ha6ScQNdnjNYFuUQNs0tA6ngWc6s8W.pHzCfDV2pwscE.',NULL,NULL,NULL,NULL,NULL,NULL,'2022-06-10 10:05:18','2022-06-10 10:05:18'),(2,'glodi','glodin@gll.com',NULL,'$2y$10$GlmQlflmnYVNsCUkbjn9puJ06OBhiXo586X1aZ1vsbXQAakVe0dte',NULL,NULL,NULL,NULL,NULL,NULL,'2022-09-02 14:09:20','2022-09-02 14:09:20'),(3,'glodi','glodssin@gll.cos',NULL,'$2y$10$WWRGjphJEzLxB/6npFmF2e2B5rFeVRVLwKLp6xAcFzn0Vhd9xHOvy',NULL,NULL,NULL,NULL,NULL,NULL,'2022-09-02 14:16:13','2022-09-02 14:16:13'),(4,'king','glodin.kiese@gmail.com',NULL,'$2y$10$tbC7ePZeGGTZcfxzBeuNfeJNp5zvKys6POQtpDbyqVMmVv/YSK2pe',NULL,NULL,NULL,NULL,NULL,NULL,'2022-09-02 14:25:52','2022-09-02 14:25:52');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -642,4 +643,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-25 18:23:40
+-- Dump completed on 2022-09-12 14:32:31

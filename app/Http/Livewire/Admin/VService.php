@@ -47,7 +47,24 @@ class VService extends Component
     public function delsous(){
         array_splice($this->sous, $this->selectedID2, 1);
         $this->ab = "";
-        
+    }
+
+    public function delallsous()
+    {
+        $this->sous = [];
+        $validate = $this->validate([
+            "nom" => 'required',
+            "descrip" => 'required',
+            "sous"=>'array',
+        ]);
+
+        $record = service::find($this->selectedID);
+        $record->update($validate);
+        session()->flash("message", "Modifications effectuées avec succès");
+        $this->dispatchBrowserEvent("crud");
+        $this->resetInputs();
+        /* dd($this->sous); */
+
     }
 
 
