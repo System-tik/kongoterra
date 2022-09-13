@@ -16,7 +16,7 @@ class ApiControllerClient extends Controller
         try {
             //validation des éléments request
             $rules = [
-                'noms' => 'required|min:4|max:25',
+                'noms' => 'required|min:4|max:50',
                 'tel' => 'required|min:10|max:14',
                 'email' => 'required|email',
                 'mdp' => 'required'
@@ -24,7 +24,7 @@ class ApiControllerClient extends Controller
             $validate = Validator::make($request->all(), $rules, $messages = [
                 'noms.required' => 'Veuillez rensigner le nom.',
                 'noms.min' => 'le nom doit contenir plus de 4 caractères.',
-                'noms.max' => 'le nom ne doit contenir plus de 25 caractères.',
+                'noms.max' => 'le nom ne doit contenir plus de 50 caractères.',
 
                 'tel.required' => 'Veuillez saisir le numéro.',
                 'tel.min' => 'Veuillez vérifier que le numéro est valide.',

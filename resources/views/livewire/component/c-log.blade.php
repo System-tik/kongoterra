@@ -53,7 +53,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                     </div>
-                    <input type="text" placeholder="Nom & Prenom" class="w-full text-black border-4 border-white" wire:model="noms">
+                    <input type="text" placeholder="Nom & Prenom" class="w-full text-black border-4 border-white" wire:model="noms"><br>
                     @error('noms') <span class="text-red-600">{{ $message }}</span><br> @enderror
                 </div>
                 <div class="flex">
@@ -94,3 +94,13 @@
         </div>
     </div>
 </div>
+
+<script>
+    window.addEventListener('confirm',event => {
+        console.log(event.detail.message);
+    })
+    window.addEventListener('echec',event => {
+        console.log(event.detail.message);
+    })
+
+</script>
