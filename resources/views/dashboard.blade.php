@@ -6,7 +6,7 @@
     </x-slot> --}}
 
     <div class="flex flex-col min-h-screen" x-data="{
-        menus : [true, false, false, false, false, false, false, false, false],
+        menus : [true, false, false, false, false, false, false, false, false, false],
         afficher(index){
             for (let i = 0; i < this.menus.length; i++){
                 if (i == index) this.menus[i] = true
@@ -122,6 +122,9 @@
                 </div>
                 <div x-show="menus[8]">
                     <livewire:admin.prov-ville />
+                </div>
+                <div x-show="menus[9]">
+                    <livewire:admin.v-actu>
                 </div>
             </div>
         </div>
