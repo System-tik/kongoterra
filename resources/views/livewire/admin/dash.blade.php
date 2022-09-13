@@ -13,12 +13,15 @@
                     
                 </div>
             </div>
-            <div class="w-full h-full p-1 rounded shadow bg-slate-50">
-                <livewire:component.stats.st2 text="MAGASINS" val="100" color="slate" bg="gray" icon="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+            <div class="w-full h-full px-5 py-5 rounded shadow bg-slate-50">
+                <h1 class="py-2 text-2xl text-gray-500">NOS MAGASINS</h1>
+                <div class="grid grid-cols-1">
+                    <livewire:component.stats.st2 text="MAGASINS" val="100" color="slate" bg="gray" icon="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+                </div>
             </div>
         </div>
         
-        <div class="grid grid-cols-4 gap-5 h-36">
+        <div class="grid grid-cols-4 gap-5 px-5 h-36">
             <div class="bg-gray-200">
                 <livewire:component.stats.st3 >
             </div>
