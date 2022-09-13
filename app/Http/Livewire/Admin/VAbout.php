@@ -26,6 +26,7 @@ class VAbout extends Component
 
     /* Add sous point */
     public function add(){
+        
         array_push($this->sous, $this->ab);
         $this->ab = "";
     }
@@ -46,6 +47,28 @@ class VAbout extends Component
         array_splice($this->sous, $this->selectedID2, 1);
         $this->ab = "";
         
+    }
+
+    public function delallsous()
+    {
+        $this->sous = [];
+        $validate = $this->validate([
+            "titre" => 'required',
+            "descrip" => 'required',
+            "sous" => 'nullable',
+        ]);
+
+        $record = about::find($this->selectedID);
+        $record->update([
+            "titre" => $this->titre,
+            "descrip" => $this->descrip,
+            "sous" => $this->sous,
+        ]);
+        session()->flash("message", "Modifications effectuées avec succès");
+        $this->dispatchBrowserEvent("crud");
+        $this->resetInputs();
+        /* dd($this->sous); */
+
     }
 
     /* Reset inputs */
