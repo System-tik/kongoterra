@@ -10,7 +10,7 @@ class VHeader extends Component
     public $abouts;
     public function render()
     {
-        $this->abouts = about::get(['titre', 'descrip']);
+        $this->abouts = about::get(['titre', 'descrip', 'id']);
         return view('livewire.client.home.v-header');
     }
 }
