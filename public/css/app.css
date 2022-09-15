@@ -1408,6 +1408,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .font-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+.font-serif {
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
