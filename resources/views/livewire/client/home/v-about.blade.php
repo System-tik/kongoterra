@@ -5,9 +5,9 @@
     <div class="grid grid-cols-2 pb-10 text-gray-200 lg:grid-cols-4">
         @if (count($abouts) > 0)  
         @foreach ($abouts as $ab)
-        @if (strpos($ab->titre, 'rincipe') != false)
+        @if (strpos($ab->titre, 'rincipes') != false)
             
-        @foreach ($abouts[4]["sous"] as $ss)
+        @foreach ($ab->sous as $ss)
             
         <a href="{{ route('about', ['id'=> $ab->id]) }}" class="flex flex-col items-center justify-center gap-5 mb-5 text-white hover:text-yellow-100 md:mb-0">
             <div class="p-2 text-yellow-400 bg-green-600 rounded-full lg:p-5">
