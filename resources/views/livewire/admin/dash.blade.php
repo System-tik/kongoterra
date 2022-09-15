@@ -25,7 +25,7 @@
         </div>
         
         <div class="grid grid-cols-4 gap-5 px-5 h-36">
-            <div class="bg-gray-200 cursor-pointer" @click="afficher(4)">
+            {{-- <div class="bg-gray-200 cursor-pointer" @click="afficher(4)">
                 <livewire:component.stats.st3 titre="Services" val="{{$services}}" icon="{{$menus[4]['icon']}}">
             </div>
             <div class="bg-gray-200 cursor-pointer" @click="afficher(9)" >
@@ -36,7 +36,7 @@
             </div>
             <div class="bg-gray-200 cursor-pointer" @click="afficher(5)" >
                 <livewire:component.stats.st3 titre="Produits" val="{{$produits}}" icon="{{$menus[5]['icon']}}">
-            </div>
+            </div> --}}
         </div>
         
     </div>
