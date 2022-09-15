@@ -110,7 +110,7 @@
                 <a href="/" @click="navig(0)" :class="{'text-green-400' : nav[0], 'text-white' : nav[0], 'text-gray-200' : !nav[0]}" class="h-full py-3 pr-10 text-lg transition duration-300 hover:text-gray-400">Accueil</a>
                 <div class="h-full py-3 text-lg transition duration-300 cursor-pointer hover:text-gray-400">
                     <p @mouseover="about=true" class="flex items-center justify-center gap-3 px-2 text-gray-200">A propos de nous <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></p>
-                    <div class="absolute flex flex-col p-1 px-6 bg-gray-100" x-show="about" @mouseover.away="about=false" style="z-index: 10000;">
+                    <div class="absolute flex flex-col p-1 px-6 bg-gray-100" x-show="about" @mouseover.away="about=false" style="z-index: 5000;">
                         @foreach ($abouts as $ns)
                         @if ($loop->index != 0 && $loop->index != 1 && $loop->index != 3)
                         <a href="{{ route('about', ['id'=> $ns->id]) }}" class="h-full px-6 py-3 text-lg text-gray-700 transition duration-300 border-b hover:text-gray-400">{{$ns->titre}}</a>
