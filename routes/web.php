@@ -21,13 +21,15 @@ Route::get('/', function () {
 Route::get('/about/{id}', function ($id) {
     return view('pages.about', ['id'=>$id]);
 })->name("about");
-
+Route::get('/service_detail/{id}', function ($id) {
+    return view('pages.service', ['id'=>$id]);
+})->name("service");
 Route::get('/point-vente', function () {
     return view('pages.magasins');
 })->name("pv");
 
-Route::get('/actualite', function () {
-    return view('pages.actu');
+Route::get('/actualite/{id}', function ($id) {
+    return view('pages.actu', ['id'=>$id]);
 })->name("actu");
 
 Route::get('/produits', function () {

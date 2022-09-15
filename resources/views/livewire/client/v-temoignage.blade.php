@@ -111,7 +111,7 @@
     </div>
 
     {{-- Modal formulaires --}}
-    <div class="fixed left-0 z-0 flex flex-col items-center justify-center w-screen h-screen px-5 pt-5 text-left xl:px-96 lg:px-32 md:px-24 bg-t-black top-16" x-show="form" x-transition.1500ms
+    <div class="fixed top-0 left-0 z-0 flex flex-col items-center justify-center w-screen h-screen px-5 pt-5 text-left 2xl:px-96 lg:px-32 md:px-24 bg-t-black 2xl:top-16 xl:px-24" x-show="form" x-transition.1500ms
         x-data="{
             step : 1,
             moins (){
@@ -184,8 +184,8 @@
                             <div class="py-5">
                                 <label for="lien" class="block text-sm font-medium text-gray-700">Envoyer votre témoignage par vidéo...</label>
                                 <div class="flex mt-1 rounded-md shadow-sm">
-                                    <span class="inline-flex items-center px-3 text-sm text-gray-500 border border-r-0 border-gray-300 rounded-l-md bg-gray-50"> http:// </span>
-                                    <input type="text" wire:model="lien" id="lien" class="flex-1 block w-full border-gray-300 rounded-none focus:ring-indigo-500 focus:border-indigo-500 rounded-r-md sm:text-sm" placeholder="">
+                                    <span class="inline-flex items-center px-3 text-sm text-gray-500 border border-r-0 border-gray-300 rounded-l-md bg-gray-50"> https:// </span>
+                                    <input type="text" wire:model="lien" id="lien" class="flex-1 block w-full h-10 border-gray-500 rounded-none focus:ring-indigo-500 focus:border-indigo-500 rounded-r-md sm:text-sm" placeholder="">
                                 </div>
                             </div>
                             <div class="py-4">

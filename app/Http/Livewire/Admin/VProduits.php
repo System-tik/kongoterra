@@ -145,7 +145,7 @@ class VProduits extends Component
     /* Gestion de la gallerie d'images */
 
     /* for editing gallerie images */
-     public function edit($data){
+    public function edit($data){
         $this->selectedGal = $data;
         //dd($this->selectedGal);
     }

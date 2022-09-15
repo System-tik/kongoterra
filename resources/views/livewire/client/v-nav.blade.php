@@ -59,6 +59,15 @@
                 this.conNotif = false;
             }, 5000);
         }); --}}
+    },
+    partage(){
+        let shareData = {
+            title: 'Kongoterra',
+            text: 'Allez-y visiter ce site web très interessant',
+            url: 'https://kongoterra.com'
+        }
+        window.navigator.share(shareData)
+        //console.log(shareData)
     }
 }" @scroll.window="isScrollAtTop = (window.pageYOffset > 60) ? false : true" x-init="init()">
     <div class="flex px-2 py-3 2xl:px-64 lg:px-5 md:px-24 xl:px-24 bg-gray-50 " >
@@ -68,19 +77,17 @@
             </a>
             <div class="flex flex-col items-start justify-center" x-show="isScrollAtTop" x-transition.500ms>
                 <h2 class="hidden lg:flex">Kongoterra</h2>
-                <h3>Pour une santé saine et équilibrée</h3>
+                <h3>Votre santé mérite le meilleur</h3>
             </div>
         </div>
         <div class="flex items-center justify-end flex-1 gap-2">
-            <a href="#" class="p-1 text-white bg-green-500"> 
-                <svg class="w-8 h-8 p-1 border border-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//www.kongoterra.com/" class="p-1 text-white border-2 border-green-500" > 
+                <svg class="w-8 h-8 p-1 text-green-500 border border-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
             </a>
-            <div class="flex gap-2" x-data="{s : false}">
-                <input type="text" name="" id="" x-show="s">
-                <button class="p-1 text-green-500 bg-white border border-green-500">
-                    <svg class="w-8 h-8 p-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                </button>
-            </div>
+            <a href="https://twitter.com/intent/tweet?text=https%3A//www.kongoterra.com/" class="p-1 text-white border-2 border-green-500" > 
+                <svg class="w-8 h-8 p-1 text-green-500 border border-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+            </a>
+            
             {{-- <div x-show="!isScrollAtTop">
                 <img src="{{asset('img/logo/logo.png')}}" alt="" class="transition duration-500 transform " :class="{'w-28':isScrollAtTop, 'w-10':!isScrollAtTop}">
             </div> --}}

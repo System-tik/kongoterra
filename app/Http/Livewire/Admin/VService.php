@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin;
 use Livewire\Component;
 use App\Models\service;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 class VService extends Component
 {
@@ -123,14 +124,21 @@ class VService extends Component
             "descrip" => $this->descrip,
             "sous"=>$this->sous
         ]);
+        if(!empty($this->photo)){
+            $this->photo->storePubliclyAs('public/service', $record->id.'.png');
+        }
         session()->flash("message", "Modifications effectuées avec succès");
         $this->dispatchBrowserEvent("crud");
     }
 
     /* delete record */
     public function delete(){
+        //dd($name);
         $this->validate(["selectedID" => "required"]);
         $record = service::find($this->selectedID);
+        $name =  str_replace('storage', 'public', Storage::url('public/service/'.$this->selectedID.'.png'));
+        //dd($name);
+        Storage::delete($name);
         $record->delete($record);
         session()->flash("message", "Modifications effectuées avec succès");
         $this->dispatchBrowserEvent("crud");

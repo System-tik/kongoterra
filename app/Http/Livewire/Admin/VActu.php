@@ -5,22 +5,24 @@ namespace App\Http\Livewire\Admin;
 use App\Models\actu;
 use Exception;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 class VActu extends Component
 {
+    use WithFileUploads;
     public $titre;
     public $descrip;
     public $lien;
     public $source;
     public $actus;
-    public $idUnique;
-    public $idUnique1;
-    public $idUnique2;
+    public $selectedID;
+    public $photo;
 
     protected $messages = [
         'titre.required' => 'Veuillez indiquer le titre.',
         'descrip.required' => 'Veuillez indiquer la description.',
-        'lien.required' => 'Veuillez saisir le lien',
+        'lien.nullable' => 'Veuillez saisir le lien',
         'source.required' => 'Veuillez saisir la source',
         'idUnique1.required' => 'Veuillez seléctionner une actualité!',
         'idUnique2.required' => 'Veuillez seléctionner une actualité!'
@@ -38,13 +40,14 @@ class VActu extends Component
         $validate = $this->validate([
             'titre' => 'required',
             'descrip' => 'required',
-            'lien' => 'required',
+            'lien' => 'nullable',
             'source' => 'required'
         ]);
         try {
     
             //insertion de l'actualité
-            $actu = actu::create($validate);
+            $record = actu::create($validate);
+            $this->photo->storePubliclyAs('public/actus', $record->id.'.png');
             $this->dispatchBrowserEvent('confirm',['message' => 'Actualité créée avec succès']);
             $this->emit('actualite');
             $this->clear();
@@ -70,9 +73,7 @@ class VActu extends Component
         $this->descrip = $donnee['descrip'];
         $this->lien = $donnee['lien'];
         $this->source = $donnee['source'];
-        $this->idUnique = $donnee['id'];
-        $this->idUnique1 = $donnee['id'];
-        $this->idUnique2 = $donnee['id'];
+        $this->selectedID = $donnee['id'];
     }
 
     public function update()
@@ -85,14 +86,16 @@ class VActu extends Component
         $validate = $this->validate([
             'titre' => 'required',
             'descrip' => 'required',
-            'lien' => 'required',
+            'lien' => 'nullable',
             'source' => 'required',
         ]);
         try {
-
             //recupération de l'actualité
-            $actu = actu::find($this->idUnique);
-            $actu->update($validate);
+            $record = actu::find($this->selectedID);
+            $record->update($validate);
+            if(!empty($this->photo)){
+                $this->photo->storePubliclyAs('public/actus', $record->id.'.png');
+            }
             $this->dispatchBrowserEvent('confirm',['message' => 'Actualité modifiée avec succès']);
             $this->emit('actualite');
             $this->clear();
@@ -108,13 +111,15 @@ class VActu extends Component
     {
         //vérifier si une actualité a été séléctionnée
         $validate = $this->validate([
-            'idUnique2' => 'required'
+            'selectedID' => 'required'
         ]);
 
         try {
             //recupération de l'actualité à supprimer
-            $actu = actu::find($this->idUnique);
+            $actu = actu::find($this->selectedID);
             //suppression de l'actualité
+            $name =  str_replace('storage', 'public', Storage::url('public/actus/'.$this->selectedID.'.png'));
+            Storage::delete($name);
             $actu->delete();
             $this->dispatchBrowserEvent('confirm',['message' => 'Actualité supprimée avec succès']);
             $this->emit('actualite');
