@@ -1,5 +1,5 @@
 
-<div class="mt-48">
+<div class="">
     <div style=" background-image:url('{{asset('img/fond/28117669335_529a14633f_b.jpg')}}')" class="object-cover w-full h-40">
         <div class="flex flex-col items-center justify-center w-full h-full px-5 py-10 text-left 2xl:px-64 lg:px-5 md:px-24 xl:px-24" style="background: linear-gradient(90deg, rgba(255, 255, 255, 0.925) 0%, rgba(255,255,255,1) 35%, rgba(0, 0, 0, 0) 100%); ">
             {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}

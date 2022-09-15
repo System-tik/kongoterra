@@ -1,4 +1,4 @@
-<div class="fixed top-0 w-screen" x-data="{
+<div class="w-screen" x-data="{
     connexion : true,
     mod_ins : false,
     mod_panier : false,
@@ -63,9 +63,9 @@
 }" @scroll.window="isScrollAtTop = (window.pageYOffset > 60) ? false : true" x-init="init()">
     <div class="flex px-2 py-3 2xl:px-64 lg:px-5 md:px-24 xl:px-24 bg-gray-50 " >
         <div class="flex items-center justify-center gap-5">
-            <div>
-                <img src="{{asset('img/logo/logo.png')}}" alt="" class="w-10 transition duration-500 transform md:w-28" >
-            </div>
+            <a href="/">
+                <img src="{{asset('img/logo/logo.png')}}" alt="" class="w-10 transition duration-500 transform md:w-20" >
+            </a>
             <div class="flex flex-col items-start justify-center" x-show="isScrollAtTop" x-transition.500ms>
                 <h2 class="hidden lg:flex">Kongoterra</h2>
                 <h3>Pour une santé saine et équilibrée</h3>
@@ -102,7 +102,7 @@
             <div class="{{-- items-center justify-center --}} hidden lg:flex ">
                 <a href="/" @click="navig(0)" :class="{'text-green-400' : nav[0], 'text-white' : nav[0], 'text-gray-200' : !nav[0]}" class="h-full py-3 pr-10 text-lg transition duration-300 hover:text-gray-400">Accueil</a>
                 <div class="h-full py-3 text-lg transition duration-300 cursor-pointer hover:text-gray-400">
-                    <p @mouseover="about=true" class="flex items-center justify-center gap-3 px-6 text-gray-200">A propos de nous <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></p>
+                    <p @mouseover="about=true" class="flex items-center justify-center gap-3 px-2 text-gray-200">A propos de nous <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></p>
                     <div class="absolute flex flex-col p-1 px-6 bg-gray-100" x-show="about" @mouseover.away="about=false">
                         @foreach ($abouts as $ns)
                         @if ($loop->index != 0 && $loop->index != 1 && $loop->index != 3)
@@ -114,10 +114,10 @@
                     </div>
                 </div>
                 {{-- <a href="/#domaines" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Secteurs d'activité</a> --}}
-                <a href="/#produits" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Nos Produits</a>
-                <a href="/#services" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Nos services</a>
+                <a href="/#produits" class="h-full px-2 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Nos Produits</a>
+                <a href="/#services" class="h-full px-2 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Nos services</a>
                 <a href="{{route("tem")}}" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Temoignages</a>
-                <a href="/#footer" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Contacts</a>
+                <a href="/#Actu" class="h-full px-2 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Actualités</a>
                 @if (session()->get('client') != null)
                 <div class="flex items-center justify-end flex-1 gap-5 text-red-600">
                     <a href="#" class="h-full py-3 text-lg text-green-500 transition duration-300 hover:text-gray-400" @click="panier()">
@@ -149,7 +149,7 @@
                 <a href="/" class="h-full px-10 py-3 text-lg text-white transition duration-300 bg-green-600 hover:text-gray-200 hover:bg-gray-100">Accueil</a>
                 <a href="/#produits" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Nos Produits</a>
                 <a href="/#services" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Nos services</a>
-                <a href="/#footer" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Contacts</a>
+                <a href="/#Actu" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Actualités</a>
                 <div class="h-full py-3 text-lg transition duration-300 cursor-pointer hover:text-gray-400">
                     <p @click="about=true" class="flex gap-3 px-6 text-gray-200">A propos de nous <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></p>
                     <div class="flex flex-col p-1 px-6 " x-show="about" @click.away="about=false">

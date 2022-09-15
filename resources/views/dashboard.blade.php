@@ -7,11 +7,13 @@
 
     <div class="flex flex-col min-h-screen" x-data="{
         menus : [true, false, false, false, false, false, false, false, false, false],
+        menu : 0,
         afficher(index){
             for (let i = 0; i < this.menus.length; i++){
                 if (i == index) this.menus[i] = true
                 else this.menus[i] = false
             }
+            this.menu = index
         }
     }">
         <div class="px-10 py-2">
@@ -71,8 +73,7 @@
                             <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
     
-                                <x-jet-dropdown-link href="{{ route('logout') }}"
-                                         @click.prevent="$root.submit();">
+                                <x-jet-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
                                     {{ __('Log Out') }}
                                 </x-jet-dropdown-link>
                             </form>
@@ -84,7 +85,7 @@
         </div>
         <div class="flex w-full gap-2 px-10 pt-4 pb-32 text-white xl:text-xs bg-gradient-to-r from-green-900 to-green-400">
             @foreach ($menus as $menu)    
-            <div class="flex items-center justify-center gap-2 pr-3 text-sm transition duration-200 transform border-r border-gray-700 cursor-pointer hover:text-gray-400 hover:scale-95" @click="afficher({{$loop->index}})">
+            <div :class="{'text-yellow-400': menu=={{$loop->index}}}" class="flex items-center justify-center gap-2 pr-3 text-sm transition duration-200 transform border-r border-gray-700 cursor-pointer hover:text-gray-400 hover:scale-95" @click="afficher({{$loop->index}})">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="{{ $menu["icon"]}}" />
                 </svg>
@@ -96,34 +97,34 @@
         </div>
         <div class="flex flex-col items-center flex-1 h-full px-10 ">
             <div class="relative flex-1 w-full h-full -top-28">
-                <div x-show="menus[0]" class="animate__animated animate__bounceInRight">
-                    <livewire:admin.dash />
+                <div x-show="menus[0]" class="animate__animated animate__fadeIn">
+                    <livewire:admin.dash :menus="$menus" />
                 </div>
-                <div x-show="menus[1]" class="animate__animated animate__bounceInRight">
+                <div x-show="menus[1]" class="animate__animated animate__fadeIn">
                     <livewire:admin.v-info />
                 </div>
-                <div x-show="menus[2]" class="animate__animated animate__bounceInRight">
+                <div x-show="menus[2]" class="animate__animated animate__fadeIn">
                     <livewire:admin.v-header />
                 </div>
-                <div x-show="menus[3]" class="animate__animated animate__bounceInRight">
+                <div x-show="menus[3]" class="animate__animated animate__fadeIn">
                     <livewire:admin.v-about />
                 </div>
-                <div x-show="menus[4]" class="animate__animated animate__bounceInRight">
+                <div x-show="menus[4]" class="animate__animated animate__fadeIn">
                     <livewire:admin.v-service />
                 </div>
-                <div x-show="menus[5]" class="animate__animated animate__bounceInRight">
+                <div x-show="menus[5]" class="animate__animated animate__fadeIn">
                     <livewire:admin.v-produits />
                 </div>
-                <div x-show="menus[6]" class="animate__animated animate__bounceInRight">
+                <div x-show="menus[6]" class="animate__animated animate__fadeIn">
                     <livewire:admin.v-magasin />
                 </div>
-                <div x-show="menus[7]" class="animate__animated animate__bounceInRight">
+                <div x-show="menus[7]" class="animate__animated animate__fadeIn">
                     <livewire:admin.v-commandes />
                 </div>
-                <div x-show="menus[8]" class="animate__animated animate__bounceInRight">
+                <div x-show="menus[8]" class="animate__animated animate__fadeIn">
                     <livewire:admin.prov-ville />
                 </div>
-                <div x-show="menus[9]">
+                <div x-show="menus[9]" class="animate__animated animate__fadeIn">
                     <livewire:admin.v-actu>
                 </div>
             </div>

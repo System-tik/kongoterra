@@ -115,7 +115,6 @@ class VService extends Component
         $validate = $this->validate([
             "nom" => 'required',
             "descrip" => 'required',
-            "sous"=>'required'
         ]);
 
         $record = service::find($this->selectedID);

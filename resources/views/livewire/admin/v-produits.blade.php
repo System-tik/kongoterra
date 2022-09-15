@@ -144,7 +144,7 @@
     {{-- gallerie --}}
     <div class="absolute top-0 left-0 flex flex-col w-full h-full black-transparent" x-show="gallerie" x-transition.500ms>
         <div class="flex items-center justify-between text-white bg-black">
-            <p class="px-5"><b>Gallerie d'images du bien</b></p>
+            <p class="px-5"><b>Gallerie d'images du bien {{-- {{$selectedID}} --}}</b></p>
             <button class="p-2 text-white bg-red-600" @click="gallerie=false">X</button>
         </div>
         <div class="flex items-start justify-start px-2 py-2">

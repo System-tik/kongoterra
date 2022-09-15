@@ -5,6 +5,7 @@
     <livewire:client.home.v-about  />
     <livewire:client.home.v-produit :excep="null"  />
     <livewire:client.home.v-service />
+    <livewire:client.home.v-actu />
 
     {{-- <livewire:client.v-footer> --}}
 </div>

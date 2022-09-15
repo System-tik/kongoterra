@@ -6,10 +6,11 @@ use Livewire\Component;
 /* appelle des models */
 use App\Models\produit;
 use App\Models\catp;
-
+use ArrayObject;
 /* Gestion des fichiers */
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
+use PhpParser\Node\Expr\Cast\Array_;
 
 class VProduits extends Component
 {
@@ -169,22 +170,25 @@ class VProduits extends Component
 
     public function addImg(){
         $b_files = Storage::files('public/produits/'.$this->selectedID);
+        $imgs = new ArrayObject($this->galleries);
+        $imgs = $imgs->getArrayCopy();
+        //dd($imgs);
         if(count($b_files) == 0){
              /* Sauvegarde images */
-            for ($i=0; $i < count(array($this->galleries)); $i++) { 
+            for ($i=0; $i < count($imgs); $i++) { 
                 # code...
                 $this->galleries[$i]->storePubliclyAs('public/produits/'.$this->selectedID.'/', $i.'.png');
                 array_push($this->images, asset(str_replace('public', 'storage', Storage::files('public/produits/'.$this->selectedID)[$i])));
-                $this->emitSelf('imgUpdate');
+                //$this->emitSelf('imgUpdate');
             }
         }
        else{
             /* Recuperer le nom du dernier fichier tout en l'isolant de son extension, puis le convertir en int  */
             $last = intval(explode('.', explode('/', $b_files[count($b_files)-1])[3])[0]);
             
-            for ($i=0; $i < count($this->galleries); $i++) { 
+            for ($i=1; $i <= count($imgs); $i++) { 
                 # code...
-                $filename = $last == 0 && $i == 0 ? 1 : ($last == 0 && $i != 0 ? $i + 1 : ($last != 0 && $i == 0 ? $last + 1 : $i + $last));
+                $filename = $last + $i;  /* $last == 0 && $i == 0 ? 1 : ($last == 0 && $i != 0 ? $i + 1 : ($last != 0 && $i == 0 ? $last + 1 : $i + $last)); */
                 /* 
                 0,0=> 1
                 0, !0 => $i+1
@@ -192,10 +196,10 @@ class VProduits extends Component
                 !0, 0=>$i+1
                 */
                 /* dd($last, $filename); */
-                $this->galleries[$i]->storePubliclyAs('public/produits/'.$this->selectedID.'/', $filename.'.png');
+                $this->galleries[$i-1]->storePubliclyAs('public/produits/'.$this->selectedID.'/', $filename.'.png');
                 array_push($this->images, asset(str_replace('public', 'storage', Storage::files('public/produits/'.$this->selectedID)[$filename])));
                 //$this->galleries[$i]->storePubliclyAs('public/gallerie/', $record->id.'.png');
-                $this->emitSelf('imgUpdate');
+                //$this->emitSelf('imgUpdate');
             }
        }
        $record = produit::find($this->selectedID);
@@ -204,6 +208,6 @@ class VProduits extends Component
             array_push($this->images, asset(str_replace('public', 'storage', $img)));
         }
         $record->update(['images'=>$this->images]);
-        $this->resetInputs();
+        //$this->resetInputs();
     }
 }

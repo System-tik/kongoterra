@@ -1,4 +1,4 @@
-<div class="flex flex-col items-center justify-center md:mt-36 mt-28" x-data="{
+<div class="flex flex-col items-center justify-center" x-data="{
     about:[true, false, false],
     aff(index){
         for (let i = 0; i < this.about.length; i++){
@@ -8,7 +8,7 @@
     }
 }">
     @if (count($abouts) > 0)    
-    <div class="bg-cover" style="background-image:url('{{ asset('img/fond/ac.jpg') }}'); height:60vh;" >
+    <div class="w-screen bg-cover" style="background-image:url('{{ asset('img/fond/ac.jpg') }}'); height:60vh;" >
         <div class="flex flex-col justify-center w-full h-full px-5 text-white 2xl:px-64 lg:px-5 md:px-24 xl:px-24" style="background-color: rgba(0, 0, 0, .3)">
             <h1 class="px-5 py-2 text-4xl text-center lg:py-5 lg:text-justify">KONGOTERRA</h1>
             <p class="hidden px-5 py-2 text-lg text-justify lg:py-5 animate__animated animate__fadeInRight lg:block" x-show="about[0]" style="background-color: ">
@@ -21,7 +21,7 @@
                 {{ $abouts[1]->descrip }}
             </p>
             <p class="px-5 py-2 text-lg text-justify lg:py-5 animate__animated animate__fadeInRight" x-show="about[2]" style="background-color: ">
-                {{ $abouts[3]->descrip }}
+                {{ $abouts[2]->descrip }}
             </p>
         </div>
     </div>

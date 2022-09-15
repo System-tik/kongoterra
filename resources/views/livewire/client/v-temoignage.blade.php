@@ -1,5 +1,5 @@
 
-<div class="mt-48" x-data="{
+<div class="" x-data="{
     notifU : false,
     spinner : false,
     form:false,

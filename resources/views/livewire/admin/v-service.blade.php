@@ -15,9 +15,9 @@
             }, 3000);
         });
     }
-}" x-init="init()">
+}" x-init="init()" >
     <div class="grid h-full grid-cols-3 gap-3">
-        <div class="h-full p-4 rounded bg-gray-50">
+        <div class="h-full p-4 rounded ">
             <h1 class="py-2 text-xl font-bold">Mise à jour de données | Services</h1>
             <hr>
             <div class="pt-2">
@@ -111,7 +111,7 @@
                             <div>
                                 @if (Storage::exists('public/service/'.$serv->id.'.png'))                                
                                 <img 
-                                    src="{{asset(str_replace('public', 'storage', Storage::files('public/service/')[0]))}}?{{ rand()}}" 
+                                    src="{{asset(str_replace('public', 'storage', Storage::files('public/service/')[$loop->index]))}}?{{ rand()}}" 
                                     alt="Pas d'image pour cette info"  
                                     class=""
                                     style="height: 50px;">

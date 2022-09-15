@@ -79,7 +79,8 @@
                         <div class="p-1 shadow">
                             <h1 class="pb-2 text-xl border-b">Client</h1>
                             <p><b>Nom : </b>{{($cmd) ? $cmd['noms']: ''}}</p>
-                            <p><b>Tel : </b><a href="tel:{{($cmd) ? $cmd['tel']: ''}}">{{($cmd) ? $cmd['tel']: ''}}</a></p>
+                            
+                            <p><b>Tel : </b><a href="https://wa.me/{{($cmd) ? $cmd['tel']: ''}}?text=Bonjour%20,%20www.Kongoterra.com%20a%20reçu%20votre%20commande%20de%20{{count($produits_cmd)}}%20produits%20,%20pour%20un%20total%20de%20{{$total}}%20FC">{{($cmd) ? $cmd['tel']: ''}}</a></p>
                             <p><b>Email : </b><a href="mailto:{{($cmd) ? $cmd['email']: ''}}">{{($cmd) ? $cmd['email']: ''}}</a></p>
                         </div>
                         <div class="col-span-2 p-1 shadow">

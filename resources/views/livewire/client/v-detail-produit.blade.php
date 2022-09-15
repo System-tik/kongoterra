@@ -1,7 +1,7 @@
 <div>
     {{-- The Master doesn't talk, he acts. --}}
     <livewire:client.v-nav>
-        <div class="flex flex-col items-center justify-center mt-48">
+        <div class="flex flex-col items-center justify-center ">
             <header class="flex flex-col items-center justify-end object-cover w-full py-1 font-bold text-white bg-green-600 header-back" {{-- style="background-image: url({{asset('img/USA_Coast_Sunrises_and_sunsets_Marinas_San_589198_1280x853.jpg')}});" --}}>
                 <h1>Description de l'annonce</h1>
             </header>

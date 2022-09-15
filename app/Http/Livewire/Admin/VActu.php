@@ -32,7 +32,7 @@ class VActu extends Component
         return view('livewire.admin.v-actu');
     }
 
-    public function add()
+    public function store()
     {
         //validation des données
         $validate = $this->validate([
@@ -63,7 +63,7 @@ class VActu extends Component
         $this->source = "";
     }
 
-    public function recupere($donnee)
+    public function fillInputs($donnee)
     {
         //recupération des données d'une actualité
         $this->titre = $donnee['titre'];
