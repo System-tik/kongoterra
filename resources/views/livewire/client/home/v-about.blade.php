@@ -5,7 +5,7 @@
     <div class="grid grid-cols-2 pb-10 text-gray-200 lg:grid-cols-4">
         @if (count($abouts) > 0)  
         @foreach ($abouts as $ab)
-        @if (strpos($ab->titre, 'rincipe') !== false)
+        @if (strpos($ab->titre, 'rincipe') != false)
             
         @foreach ($abouts[4]["sous"] as $ss)
             

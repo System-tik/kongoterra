@@ -845,6 +845,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .justify-between {
   justify-content: space-between;
 }
+.justify-evenly {
+  justify-content: space-evenly;
+}
 .gap-6 {
   gap: 1.5rem;
 }
@@ -1289,6 +1292,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .px-10 {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
+}
+.px-96 {
+  padding-left: 24rem;
+  padding-right: 24rem;
 }
 .px-2\.5 {
   padding-left: 0.625rem;
@@ -2232,10 +2239,6 @@ Ensure the default browser behavior of the `hidden` attribute.
     flex-direction: row;
   }
 
-  .md\:justify-center {
-    justify-content: center;
-  }
-
   .md\:gap-6 {
     gap: 1.5rem;
   }
@@ -2349,12 +2352,12 @@ Ensure the default browser behavior of the `hidden` attribute.
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
-  .lg\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
   .lg\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .lg\:flex-row {
@@ -2367,10 +2370,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:items-start {
     align-items: flex-start;
-  }
-
-  .lg\:gap-52 {
-    gap: 13rem;
   }
 
   .lg\:gap-10 {
