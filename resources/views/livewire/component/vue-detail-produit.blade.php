@@ -118,7 +118,7 @@
                 </p>
                 <div class="py-3">
                     <h1 class="py-2">Liste des magasins disponible</h1>
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
                         @foreach ($magasins as $mag)    
                         <div class="flex shadow">
                             <div class="flex items-center justify-center p-3 border">

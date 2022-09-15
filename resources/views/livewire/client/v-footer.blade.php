@@ -6,9 +6,9 @@
             
         <div class="flex flex-col">
             <div class="flex items-center gap-5 py-5 border-b border-gray-800">
-                <div>
-                    <img src="{{asset('img/logo/logo.png')}}" alt="" class="transition duration-500 transform w-28">
-                </div>
+                <a href="/">
+                    <img src="{{asset('img/logo/logo.png')}}" alt="" class="w-20 transition duration-500 transform">
+                </a>
                 <div class="flex flex-col items-start justify-center" >
                     <h2>Kongoterra</h2>
                     <h3>Pour une santé saine et équilibrée</h3>
@@ -67,9 +67,9 @@
         @endif
         
     </div>
-    <div class="px-5 py-2 text-center text-white bg-gray-700 2xl:px-64 lg:px-5 md:px-24 xl:px-24 md:text-justify">
+    <div class="px-5 py-2 text-left text-white bg-gray-700 2xl:px-64 lg:px-5 md:px-24 xl:px-24 md:text-justify">
         {{-- Success is as dangerous as failure. --}}
-        <p>&#9400; Kongoterra 2022,  by : Systematik</p>
+        <p>&#9400; Kongoterra 2022, by : Systematik</p>
         
     </div>
 </div>

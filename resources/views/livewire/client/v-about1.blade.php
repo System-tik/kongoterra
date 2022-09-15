@@ -18,7 +18,7 @@
                 @if ($abouts->descrip != '0')   
                 <p class="py-5 text-2xl text-justify">{{$abouts->descrip}}</p>
                 @endif
-                <div class="flex flex-col items-center justify-center p-4 mb-5 font-serif">
+                <div class="flex flex-col p-4 mb-5 ">
                     @if ($abouts->sous != null)
                     <div class="flex flex-col gap-5 py-5">
                         @foreach ($abouts->sous as $abt)

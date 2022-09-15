@@ -15,7 +15,7 @@
                 {{$abouts[0]->descrip}}
             </p>
             <p class="block px-5 py-2 text-lg text-justify lg:py-5 animate__animated animate__fadeInRight lg:hidden" x-show="about[0]" style="background-color: ">
-                {{ substr($abouts[0]->descrip, 0, 200) }}... <a href="#" class="text-green-400">Lire plus.</a>
+                {{ substr($abouts[0]->descrip, 0, 200) }}... <a href="{{route('about', 1)}}" class="text-green-400">Lire plus.</a>
             </p>
             <p class="px-5 py-2 text-lg text-justify lg:py-5 animate__animated animate__fadeInRight" x-show="about[1]" style="background-color: ">
                 {{ $abouts[1]->descrip }}
