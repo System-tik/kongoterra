@@ -24,7 +24,7 @@ class VActu extends Component
         'descrip.required' => 'Veuillez indiquer la description.',
         'lien.nullable' => 'Veuillez saisir le lien',
         'source.required' => 'Veuillez saisir la source',
-        'idUnique1.required' => 'Veuillez seléctionner une actualité!',
+        'selectedID.required' => 'Veuillez seléctionner une actualité!',
         'idUnique2.required' => 'Veuillez seléctionner une actualité!'
     ];
 
@@ -80,7 +80,7 @@ class VActu extends Component
     {
         //vérifier si une actualité est séléctionnée
         $valide = $this->validate([
-            'idUnique1' => 'required'
+            'selectedID' => 'required'
         ]);
         //validation des données
         $validate = $this->validate([
