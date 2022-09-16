@@ -63,7 +63,7 @@
             <div class="px-10 pt-10 pb-1">
                 <h1 class="text-xl font-bold">Description</h1>
                 <div class="w-full">
-                    <p>{{$produit->descrip}}</p>
+                    <p class="text-justify ">{{$produit->descrip}}</p>
                     
                 </div>
                 <h1 class="py-2 text-xl font-bold">Ajouter dans le panier</h1>
