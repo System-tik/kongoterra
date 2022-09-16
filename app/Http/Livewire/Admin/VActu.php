@@ -25,7 +25,6 @@ class VActu extends Component
         'lien.nullable' => 'Veuillez saisir le lien',
         'source.required' => 'Veuillez saisir la source',
         'selectedID.required' => 'Veuillez seléctionner une actualité!',
-        'idUnique2.required' => 'Veuillez seléctionner une actualité!'
     ];
 
     public function render()

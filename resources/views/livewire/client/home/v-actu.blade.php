@@ -17,7 +17,7 @@
     </div>
     <div>
         <h1 class="pb-5 text-lg font-bold text-green-600 xl:text-3xl lg:text-2xl">Nous suivre sur Facebook</h1>
-        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fweb.facebook.com%2Fcotedivoireartemisia18&tabs=timeline&width=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="500" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        <iframe class="w-full" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fweb.facebook.com%2Fcotedivoireartemisia18&tabs=timeline&width=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
     </div>
 </div>
 @endif

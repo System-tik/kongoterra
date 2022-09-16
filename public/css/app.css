@@ -560,6 +560,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mb-4 {
   margin-bottom: 1rem;
 }
+.-mt-px {
+  margin-top: -1px;
+}
 .mb-5 {
   margin-bottom: 1.25rem;
 }
@@ -721,6 +724,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .max-w-xl {
   max-width: 36rem;
+}
+.max-w-6xl {
+  max-width: 72rem;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -1022,6 +1028,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
+.border-gray-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
+}
 .border-gray-800 {
   --tw-border-opacity: 1;
   border-color: rgb(31 41 55 / var(--tw-border-opacity));
@@ -1293,10 +1303,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-left: 2.5rem;
   padding-right: 2.5rem;
 }
-.px-96 {
-  padding-left: 24rem;
-  padding-right: 24rem;
-}
 .px-2\.5 {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
@@ -1355,6 +1361,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .pb-5 {
   padding-bottom: 1.25rem;
+}
+.pt-8 {
+  padding-top: 2rem;
 }
 .pt-10 {
   padding-top: 2.5rem;
@@ -1473,6 +1482,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .tracking-wide {
   letter-spacing: 0.025em;
 }
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
@@ -1552,6 +1564,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+.text-gray-300 {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 .text-yellow-400 {
   --tw-text-opacity: 1;
@@ -1940,6 +1956,11 @@ Ensure the default browser behavior of the `hidden` attribute.
     border-color: rgb(17 24 39 / var(--tw-border-opacity));
   }
 
+  .dark\:bg-gray-900 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+  }
+
   .dark\:bg-gray-700 {
     --tw-bg-opacity: 1;
     background-color: rgb(55 65 81 / var(--tw-bg-opacity));
@@ -2109,6 +2130,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .sm\:items-center {
     align-items: center;
+  }
+
+  .sm\:justify-start {
+    justify-content: flex-start;
   }
 
   .sm\:justify-center {

@@ -19,7 +19,7 @@
         </div>
         <div class="">
             <div>
-                <img src="{{asset(Storage::url('public/actus/'.$actus->id.'.png'))}}?{{ rand()}}" alt="" srcset="">
+                <img src="{{asset(Storage::url('public/actus/'.$actus->id.'.png'))}}?{{ rand()}}" class="w-full">
             </div>
             <div class="w-full ">
                 <div class="" >
