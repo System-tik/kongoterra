@@ -34,13 +34,14 @@
                 <hr>
                 {{-- Gallerie annonce --}}
                 <div class="flex flex-col w-full gap-4"> 
-                    <img src="{{asset(str_replace('public', 'storage', Storage::files('public/produits/'.$produit->id)[0]))}}?{{ rand()}}" alt="" style="height:384px;" class="w-full h-96">
-                    <div class="grid grid-cols-2 gap-4 p-1 bg-gray-100 rounded-sm xl:grid-cols-4 sm:grid-cols-3">
+                    <img src="{{asset(str_replace('public', 'storage', Storage::files('public/produits/'.$produit->id)[$position]))}}?{{ rand()}}" alt="" style="height:384px;" class="w-full h-96">
+                    <div class="grid grid-cols-2 gap-4 p-1 bg-gray-100 rounded-sm xl:grid-cols-4 sm:grid-cols-3" >
                         @foreach (Storage::files('public/produits/'.$produit->id) as $b)
                             
-                        <a href="#">
-                            <img src="{{asset(str_replace('public', 'storage', $b))}}?{{ rand() }}" alt="Pas d'image pour cette info" srcset="" class="w-full" style="height:70px;">
-                        </a>
+                            <div class="cursor-pointer" wire:click="change_img({{$loop->index}})">
+                                <img src="{{asset(str_replace('public', 'storage', $b))}}?{{ rand() }}" alt="Pas d'image pour cette info" class="w-full" style="height:70px;">
+                            </div>
+
                         @endforeach
                         
                     </div>

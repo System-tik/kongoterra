@@ -77,7 +77,7 @@
             </a>
             <div class="flex flex-col items-start justify-center" x-show="isScrollAtTop" x-transition.500ms>
                 <h2 class="hidden lg:flex">Kongoterra</h2>
-                <h3>Votre santé mérite le meilleur</h3>
+                <h3>Votre santé mérite le meilleur.</h3>
             </div>
         </div>
         <div class="flex items-center justify-end flex-1 gap-2">

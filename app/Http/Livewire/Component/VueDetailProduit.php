@@ -13,12 +13,21 @@ class VueDetailProduit extends Component
     public $qte;
     protected $listeners = ['reRenderParent'];
     public $produits_p = [];
+    public $position = 0;
     //public $magasins;
 
     public function render()
     {
-        return view('livewire.component.vue-detail-produit', ['magasins' => magasin::paginate(4)]);
+        return view('livewire.component.vue-detail-produit', ['magasins' => magasin::paginate(4), 'position' => $this->position]);
     }
+
+
+
+    public function change_img($id)
+    {
+        $this->position = $id;
+    }
+
 
     public function mount($produit){
         $this->produit = $produit;
@@ -68,4 +77,6 @@ class VueDetailProduit extends Component
         $this->mount($this->produit);
         $this->render();
     }
+
+    
 }
