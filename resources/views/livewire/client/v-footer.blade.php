@@ -11,7 +11,7 @@
                 </a>
                 <div class="flex flex-col items-start justify-center" >
                     <h2>Kongoterra</h2>
-                    <h3>Pour une santé saine et équilibrée</h3>
+                    <h3>Votre santé mérite le meilleur.</h3>
                 </div>
             </div>
             <div class="py-5">

@@ -82,14 +82,14 @@
                 @if (strlen($tem->lien) > 0)    
                 <div class="flex flex-col p-5 shadow-2xl">
                     <div class="flex-1 w-full">
-                        <iframe 
+                        {{-- <iframe 
                             class="w-full" 
                             height="720" 
                             src="https://www.youtube.com/embed/{{strpos(explode('/', $tem->lien)[3], '=') == false ? explode('/', $tem->lien)[3] : explode('=', explode('/', $tem->lien)[3])[1]}}" 
                             frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen>
-                        </iframe>
+                        </iframe> --}}
                         <p>
                             {{$tem->contenu}} 
                         </p>

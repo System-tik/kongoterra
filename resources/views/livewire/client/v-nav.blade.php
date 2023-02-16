@@ -168,7 +168,7 @@
                     </div>
                 </div>
                 @if (session()->get('client') != null)
-                    Connecteee
+                    Connecté(e)!
                 @else    
                 <div class="flex items-center justify-center flex-1 gap-5 text-red-600 border-t">
                     <a href="#" class="flex-1 h-full py-3 text-lg text-center text-green-500 transition duration-300 border-r hover:text-gray-400" @click="connecter()">Connexion</a>

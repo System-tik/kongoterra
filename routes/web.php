@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Config;
 
 Route::get('/', function () {
     return view('pages.home');
+})->name("welcome")->name('home');
+
+Route::get('/Actu', function () {
+    return view('pages.home');
 })->name("welcome");
 
 Route::get('/about/{id}', function ($id) {

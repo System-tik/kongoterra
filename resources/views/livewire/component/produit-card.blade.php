@@ -1,5 +1,5 @@
 <div class="flex flex-col pb-4 bg-white rounded shadow-lg">
-    {{-- <img src="{{asset('img/maison/191199962_327186845676843_5614446053251912539_n.jpg')}}" alt="" srcset="" class="w-full " style="border-radius: 4%"> --}}
+    <img src="{{asset('img/maison/191199962_327186845676843_5614446053251912539_n.jpg')}}" alt="" srcset="" class="w-full " style="border-radius: 4%">
     @if (Storage::exists(Storage::files('public/produits/'.$produit->id)[0]))    
     <img 
         src="{{asset(str_replace('public', 'storage', Storage::files('public/produits/'.$produit->id)[0]))}}?{{ rand()}}" 
