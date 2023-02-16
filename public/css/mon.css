@@ -5,6 +5,10 @@ body{
     background-color: rgba(0,0,0, .5);
 }
 
+.bg-t-green {
+  background-color: rgba(0, 255, 76, 0.5);
+}
+
 
 .slider {
     width: 90vw;

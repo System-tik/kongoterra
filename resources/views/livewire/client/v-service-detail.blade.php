@@ -1,7 +1,7 @@
 <div class="">
 
     <div style="background-image:url('{{asset(Storage::url('public/service/'.$services->id.'.png'))}}?{{ rand()}}');" class="w-full h-56 bg-no-repeat bg-cover lg:h-72">
-        <div class="h-full bg-t-black">
+        <div class="h-full bg-t-black flex flex-col">
 
             <div class="flex flex-col items-center justify-center w-full h-full px-5 py-10 text-left text-white 2xl:px-64 lg:px-5 md:px-24 xl:px-24" {{-- style="background: linear-gradient(90deg, rgba(255, 255, 255, 0.925) 0%, rgba(255,255,255,1) 35%, rgba(0, 0, 0, 0) 100%); --}} >
                 {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
@@ -9,6 +9,13 @@
                     Service <span class="font-bold">⸣</span>               
                 </h4>
                 <h1 class="w-full mt-2 text-xl font-bold text-center lg:text-left md:text-3xl">{{ $services->nom }}</h1>
+            </div>
+            <div class=" ">
+                <div class="flex justify-end 2xl:px-64 lg:px-5 md:px-24 xl:px-24 py-3 gap-3">
+                    @foreach ($servs as $ser)
+                    <a href="{{route('service', $ser->id)}}" class="text-white rounded-full px-5  {{($idS == $ser->id) ? 'border-2 bg-t-green' : 'border-2 bg-t-black'}}" >{{ $loop->index + 1 }}</a>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
@@ -31,5 +38,6 @@
             
         </div>
     </div>
+
 
 </div>
