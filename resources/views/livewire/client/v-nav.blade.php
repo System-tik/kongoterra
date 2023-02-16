@@ -125,8 +125,13 @@
                     </div>
                 </div>
                 {{-- <a href="/#domaines" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Secteurs d'activité</a> --}}
-                <a href="/#produits" class="h-full px-2 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Nos Produits</a>
+                @if (Route::currentRouteName() == 'home')
+                <a href="/#produits" class="h-full px-2 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400" target="_self">Nos Produits</a>
                 <a href="/#services" class="h-full px-2 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Nos services</a>
+                @else
+                <a href="{{route('prod')}}" class="h-full px-2 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400" target="_self">Nos Produits</a>
+                <a href="{{route('service', $services[0]->id)}}" class="h-full px-2 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Nos services</a>
+                @endif
                 <a href="{{-- {{route("tem")}} --}}https://maison-artemisia.org/temoignages" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400" target="_blank">Temoignages</a>
                 @if (count($actus) > 0)  
                 <a href="/#Actu" class="h-full px-2 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Actualités</a>
@@ -160,7 +165,8 @@
             </div>
             <div class="z-0 flex flex-col bg-gray-900 lg:hidden" x-show="open" x-transition.500ms @click.outside="open=false">
                 <a href="/" class="h-full px-10 py-3 text-lg text-white transition duration-300 bg-green-600 hover:text-gray-200 hover:bg-gray-100">Accueil</a>
-                <a href="/#produits" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Nos Produits</a>
+                
+                <a href="/#produits" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Nos Produits </a>
                 <a href="/#services" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Nos services</a>
                 <a href="{{-- {{route("tem")}} --}}https://maison-artemisia.org/temoignages" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400" target="_blank">Temoignages</a>
                 @if (count($actus) > 0)  
@@ -208,5 +214,5 @@
     <div class=" animate__animated 2xl:px-64 lg:px-5 md:px-24 xl:px-24" :class="{'animate__bounceInDown':mod_panier, 'animate__bounceOut': !mod_panier}" x-show="mod_panier" x-transition.500ms>
         <livewire:component.c-user-panier>
     </div>
-
+    
 </div>
