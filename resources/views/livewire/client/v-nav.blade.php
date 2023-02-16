@@ -128,7 +128,9 @@
                 <a href="/#produits" class="h-full px-2 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Nos Produits</a>
                 <a href="/#services" class="h-full px-2 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Nos services</a>
                 <a href="{{-- {{route("tem")}} --}}https://maison-artemisia.org/temoignages" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400" target="_blank">Temoignages</a>
+                @if (count($actus) > 0)  
                 <a href="/#Actu" class="h-full px-2 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Actualités</a>
+                @endif
                 @if (session()->get('client') != null)
                 <div class="flex items-center justify-end flex-1 gap-5 text-red-600">
                     <a href="#" class="h-full py-3 text-lg text-green-500 transition duration-300 hover:text-gray-400" @click="panier()">
@@ -161,7 +163,9 @@
                 <a href="/#produits" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Nos Produits</a>
                 <a href="/#services" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Nos services</a>
                 <a href="{{-- {{route("tem")}} --}}https://maison-artemisia.org/temoignages" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400" target="_blank">Temoignages</a>
+                @if (count($actus) > 0)  
                 <a href="/#Actu" class="h-full px-6 py-3 text-lg text-gray-200 transition duration-300 hover:text-gray-400">Actualités</a>
+                @endif
                 <div class="h-full py-3 text-lg transition duration-300 cursor-pointer hover:text-gray-400">
                     <p @click="about=true" class="flex gap-3 px-6 text-gray-200">A propos de nous <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></p>
                     <div class="flex flex-col p-1 px-6 " x-show="about" @click.away="about=false">
