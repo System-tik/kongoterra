@@ -29,7 +29,7 @@ class VProduits extends Component
 
     /* datas */
     public $produits;
-    public $catagories;
+    public $categories;
 
     protected $listeners = ['crud'=>'$refresh'];
     
