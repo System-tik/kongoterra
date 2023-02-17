@@ -31,20 +31,27 @@
                     <h1 class="py-2 text-blue-900 sm:text-3xl">{{$produit->prix}} FC</h1> 
                 </div>
                 {{-- <p class="py-3 text-xl text-gray-500">{{$produit->b}} {{$produit->an}}</p> --}}
-                <hr>
+            
                 {{-- Gallerie annonce --}}
                 <div class="flex flex-col w-full gap-4"> 
+                    <svg wire:loading 
+                        class="bg-blue-600 animate-spin z-2  h-10 w-10 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12a8 8 0 018-8V0C5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z "></path>
+                    </svg>
                     <img src="{{asset(str_replace('public', 'storage', Storage::files('public/produits/'.$produit->id)[$position]))}}?{{ rand()}}" alt="" style="height:384px;" class="w-full h-96">
                     <div class="grid grid-cols-2 gap-4 p-1 bg-gray-100 rounded-sm xl:grid-cols-4 sm:grid-cols-3" >
                         @foreach (Storage::files('public/produits/'.$produit->id) as $b)
                             
                             <div class="cursor-pointer" wire:click="change_img({{$loop->index}})">
                                 <img src="{{asset(str_replace('public', 'storage', $b))}}?{{ rand() }}" alt="Pas d'image pour cette info" class="w-full" style="height:70px;">
+                                
                             </div>
-
-                        @endforeach
-                        
-                    </div>
+                            
+                            @endforeach
+                            
+                        </div>
+                       
                 </div>
             
                 {{-- <div class="py-12">
