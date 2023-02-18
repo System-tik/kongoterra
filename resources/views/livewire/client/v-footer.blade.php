@@ -1,16 +1,16 @@
 <div id="footer" class="w-full text-white bg-gray-900">
-    <div class="px-5 py-5  lg:pt-20 2xl:px-64 lg:px-5 md:px-24 xl:px-24">
+    <div class="px-5 lg:pt-20 2xl:px-64 lg:px-5 md:px-24 xl:px-24">
 
         <section class="splide" aria-labelledby="carousel-heading">
-            <h2 class="text-2xl pb-20 font-extrabold">Nos partenaires</h2>                
+            <h2 class="text-2xl pb-20 font-extrabold text-center md:text-left pt-5">Nos partenaires</h2>                
             <div class="splide__track">
-                <ul class="splide__list grid  ">
+                <ul class="splide__list">
                     @foreach ($partenaires as $part)
                     <li class="splide__slide">
 
                         <a class="flex flex-col justify-center items-center gap-4 text-center" href="{{$part->url}}" target="_blanc">
-                            <img src="{{asset(Storage::url('public/partenaires/'.$part->id.'.png'))}}" class="h-10 w-10 md:h-20 md:w-20 lg:h-24 lg:w-24">
-                            <p class="w-2/3">
+                            <img src="{{asset(Storage::url('public/partenaires/'.$part->id.'.png'))}}" class="md:h-20 md:w-20 lg:h-24 lg:w-24 h-16 w-16">
+                            <p class="md:w-2/3">
                                 {{$part->nom}}
                             </p>
                         </a>  
@@ -23,7 +23,7 @@
     </div>
     
 
-    <div class="grid w-full gap-10  lg:grid-cols-2 px-5 py-5  lg:pb-20 2xl:px-64 lg:px-5 md:px-24 xl:px-24">
+    <div class="grid w-full gap-10  lg:grid-cols-2 px-5  lg:pb-20 2xl:px-64 lg:px-5 md:px-24 xl:px-24">
         {{-- Partenaires --}}
         {{-- Success is as dangerous as failure. --}}
         @if (count($infos) > 0)
