@@ -41,9 +41,31 @@
                                 <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
                             </svg>
                         </div>
-                        <img src="{{asset(str_replace('public', 'storage', Storage::files('public/produits/'.$produit->id)[$position]))}}?{{ rand()}}" alt="" style="height:384px;" class="w-full h-96">
+                        
+                        <section id="main-carousel" class="splide" aria-label="My Awesome Gallery">
+                            <div class="splide__track">
+                              <ul class="splide__list">
+                                @foreach (Storage::files('public/produits/'.$produit->id) as $b)                    
+                                    <li class="splide__slide">
+                                        <img src="{{asset(str_replace('public', 'storage', $b))}}?{{ rand() }}" alt="Pas d'image pour cette info" style="height:384px;" class="w-full h-96">
+                                    </li>
+                                    @endforeach           
+                              </ul>
+                            </div>
+                        </section>
                     </div> 
-                    <div class="grid grid-cols-2 gap-4 p-1 bg-gray-100 rounded-sm xl:grid-cols-4 sm:grid-cols-3" >
+                    <section id="thumbnail-carousel" class="splide" aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                            @foreach (Storage::files('public/produits/'.$produit->id) as $b)                    
+                                <li class="splide__slide">
+                                    <img src="{{asset(str_replace('public', 'storage', $b))}}?{{ rand() }}" alt="Pas d'image pour cette info">        
+                                </li>
+                            @endforeach  
+                            </ul>
+                        </div>
+                    </section>
+                    {{-- <div class="grid grid-cols-2 gap-4 p-1 bg-gray-100 rounded-sm xl:grid-cols-4 sm:grid-cols-3" >
                         @foreach (Storage::files('public/produits/'.$produit->id) as $b)
                             
                             <div class="cursor-pointer" wire:click="change_img({{$loop->index}})">
@@ -53,7 +75,7 @@
                             
                             @endforeach
                             
-                        </div>
+                        </div> --}}
                        
                 </div>
             
@@ -67,6 +89,7 @@
                 </div> --}}
             </div>
         </div>
+        
     </div>
     {{-- Formulaire contact --}}
     <div class="flex flex-col {{-- xl:w-9/12 lg:w-4/5 --}} {{-- lg:pr-10 px-5 md:px-28 sm:px-16 lg:px-0 --}} col-span-3">
@@ -184,5 +207,39 @@
             </div>
         </div>
     </div>
+      
+    
+    
+
+    <script>
+        document.addEventListener( 'DOMContentLoaded', function () 
+        {
+            var main = new Splide( '#main-carousel', {
+                type      : 'fade',
+                rewind    : true,
+                pagination: false,
+                arrows    : false,
+            } );
+
+
+            var thumbnails = new Splide('#thumbnail-carousel', {
+                fixedWidth  : 100,
+                fixedHeight : 60,
+                gap         : 10,
+                rewind      : true,
+                pagination  : false,
+                isNavigation: true,
+                breakpoints : {
+                    600: {
+                        fixedWidth : 60,
+                        fixedHeight: 44,
+                    },
+                },
+            });
+            main.sync( thumbnails );
+            main.mount();
+            thumbnails.mount();
+        });
+    </script>
     
 </div>

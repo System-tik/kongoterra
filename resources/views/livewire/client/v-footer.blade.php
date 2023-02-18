@@ -2,7 +2,7 @@
     <div class="px-5 lg:pt-20 2xl:px-64 lg:px-5 md:px-24 xl:px-24 flex flex-col gap-0">
         <h2 class="text-2xl font-extrabold  md:text-left pt-10 lg:pb-10 border-b border-gray-800 pb-2">Nos partenaires</h2>                
 
-        <section class="splide pt-8" aria-labelledby="carousel-heading">
+        <section class="splide pt-8" aria-labelledby="carousel-heading" id="footerSplide">
             <div class="splide__track">
                 <ul class="splide__list">
                     @foreach ($partenaires as $part)
@@ -102,7 +102,7 @@
             if(window.screen.width < 640) perPage = 2
             else if(window.screen.width < 1024) perPage = 3
             else perPage = 4
-            var splide = new Splide('.splide', {
+            var splide = new Splide('#footerSplide', {
                 type   : 'loop',
                 drag   : 'free',
                 focus  : 'center',
