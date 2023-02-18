@@ -1,8 +1,8 @@
 <div id="footer" class="w-full text-white bg-gray-900">
-    <div class="px-5 lg:pt-20 2xl:px-64 lg:px-5 md:px-24 xl:px-24">
+    <div class="px-5 lg:pt-20 2xl:px-64 lg:px-5 md:px-24 xl:px-24 flex flex-col gap-0">
+        <h2 class="text-2xl font-extrabold  md:text-left pt-10 lg:pb-10 border-b border-gray-800 pb-2">Nos partenaires</h2>                
 
-        <section class="splide" aria-labelledby="carousel-heading">
-            <h2 class="text-2xl pb-20 font-extrabold text-center md:text-left pt-5">Nos partenaires</h2>                
+        <section class="splide pt-8" aria-labelledby="carousel-heading">
             <div class="splide__track">
                 <ul class="splide__list">
                     @foreach ($partenaires as $part)
@@ -29,7 +29,7 @@
         @if (count($infos) > 0)
             
         <div class="flex flex-col">
-            <div class="flex items-center gap-5 py-5 border-b border-gray-800">
+            <div class="flex items-center gap-5 pb-5 border-b border-gray-800">
                 <a href="/">
                     <img src="{{asset('img/logo/logo.png')}}" alt="" class="w-20 transition duration-500 transform">
                 </a>
@@ -111,8 +111,8 @@
                     speed: 1,
                 },
                 classes: {
-                    arrows: '',
-                    arrow : 'bg-transparent',
+                    arrows: 'hidden',
+                    arrow : 'hidden',
                     prev  : 'hidden',
                     next  : 'hidden',
                     pagination: '', // container
