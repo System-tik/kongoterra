@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/mon.css') }}">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <style>
             body{
                 scroll-behavior: smooth;
@@ -46,8 +47,10 @@
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
+         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
          <script>
          $(document).ready(function(){
+            AOS.init();
            // Add smooth scrolling to all links
            $("a").on('click', function(event) {
          

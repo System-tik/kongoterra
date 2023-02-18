@@ -1,6 +1,6 @@
 {{-- Principes --}}
 <div class="flex flex-col py-5 bg-gray-900 2xl:px-64 lg:px-5 md:px-24 xl:px-24" id="about">
-    <h1 class="py-10 text-lg text-center text-white md:text-3xl">Decouvrir nos produits</h1>
+    <h1 class="py-10 text-lg text-center text-white md:text-3xl" data-aos="zoom-in">Decouvrir nos produits</h1>
     
     <div class="grid grid-cols-2 pb-10 text-gray-200 lg:grid-cols-4">
         @if (count($abouts) > 0)  

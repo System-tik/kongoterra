@@ -1,6 +1,6 @@
 <div id="services" class="bg-left bg-no-repeat bg-cover" style="background-image:url('{{asset('img/f3.jpg')}}')">
     {{-- Nothing in the world is as soft and yielding as water. --}}
-    <div class="px-5 py-5 bg-gradient-to-r via-transparent to-black 2xl:px-64 lg:px-5 md:px-24 xl:px-24 from-black lg:from-transparent lg:via-white lg:to-white">
+    <div class="px-5 py-5 bg-gradient-to-r via-transparent to-black 2xl:px-64 lg:px-5 md:px-24 xl:px-24 from-black lg:from-transparent lg:via-white lg:to-white" data-aos="flip-right">
 
         {{-- <h1 class="text-2xl font-bold">Nos services</h1>
         <hr>
