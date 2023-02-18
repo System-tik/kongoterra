@@ -4,12 +4,12 @@
         <section class="splide" aria-labelledby="carousel-heading">
             <h2 class="text-2xl pb-20 font-extrabold">Nos partenaires</h2>                
             <div class="splide__track">
-                <ul class="splide__list">
+                <ul class="splide__list grid  gap-10 lg:gap-1">
                     @foreach ($partenaires as $part)
                     <li class="splide__slide">
 
                         <a class="flex flex-col justify-center items-center gap-4 text-center" href="{{$part->url}}" target="_blanc">
-                            <img src="{{asset(Storage::url('public/partenaires/'.$part->id.'.png'))}}" class="w-40 h-40">
+                            <img src="{{asset(Storage::url('public/partenaires/'.$part->id.'.png'))}}" class="h-10 w-10 md:h-20 md:w-20 lg:h-32 lg:w-32">
                             <p>
                                 {{$part->nom}}
                             </p>
@@ -20,20 +20,6 @@
                 </ul>
             </div>
           </section>
-        {{-- <h1 class="text-xl">Nos partenaires</h1>
-        <div class="slider">
-            <div class="slide-track grid grid-cols-4 gap-16">
-                @foreach ($partenaires as $part)
-                <div class="slide">
-                    <a class="flex flex-col justify-center items-center gap-4" href="{{$part->url}}" target="_blanc">
-                        <img src="{{asset(Storage::url('public/partenaires/'.$part->id.'.png'))}}" class="w-40 h-40">
-                        {{$part->nom}}
-                    </a>  
-                </div>
-                @endforeach
-                
-            </div>
-        </div> --}}
     </div>
     
 
@@ -116,7 +102,7 @@
                 type   : 'loop',
                 drag   : 'free',
                 focus  : 'center',
-                perPage: 4,
+                perPage: 3,
                 autoScroll: {
                     speed: 1,
                 },
@@ -125,6 +111,8 @@
                     arrow : 'bg-transparent',
                     prev  : 'hidden',
                     next  : 'hidden',
+                    pagination: '', // container
+		            page      : '', // each
                 },
             }).mount( window.splide.Extensions );
             splide.mount();
