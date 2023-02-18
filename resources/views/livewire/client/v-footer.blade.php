@@ -98,11 +98,15 @@
     </div>
     <script>
         document.addEventListener( 'DOMContentLoaded', function() {
+            let perPage = 1;
+            if(window.screen.width < 640) perPage = 2
+            else if(window.screen.width < 1024) perPage = 3
+            else perPage = 4
             var splide = new Splide('.splide', {
                 type   : 'loop',
                 drag   : 'free',
                 focus  : 'center',
-                perPage: 4,
+                perPage: perPage,
                 autoScroll: {
                     speed: 1,
                 },
