@@ -8,7 +8,7 @@
         <link rel="icon" href="{{ asset('img/logo/logo_icon.png') }}" type="image/icon type">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/mon.css') }}">
         <style>
@@ -20,7 +20,7 @@
         @livewireStyles
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body onload="preloader()"  x-data="{isScrollAtTop: true}" x-init="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-screen overflow-x-hidden font-serif">
         <div class="fixed top-0 flex items-center justify-center w-screen h-screen bg-white" style="z-index: 2000;" id="loading">
