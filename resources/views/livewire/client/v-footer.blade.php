@@ -1,7 +1,26 @@
 <div id="footer" class="w-full text-white bg-gray-900">
     <div class="px-5 py-5  lg:pt-20 2xl:px-64 lg:px-5 md:px-24 xl:px-24">
 
-        <h1 class="text-xl">Nos partenaires</h1>
+        <section class="splide" aria-labelledby="carousel-heading">
+            <h2 class="text-2xl pb-20 font-extrabold">Nos partenaires</h2>                
+            <div class="splide__track">
+                <ul class="splide__list">
+                    @foreach ($partenaires as $part)
+                    <li class="splide__slide">
+
+                        <a class="flex flex-col justify-center items-center gap-4 text-center" href="{{$part->url}}" target="_blanc">
+                            <img src="{{asset(Storage::url('public/partenaires/'.$part->id.'.png'))}}" class="w-40 h-40">
+                            <p>
+                                {{$part->nom}}
+                            </p>
+                        </a>  
+                    </li>
+                    
+                    @endforeach
+                </ul>
+            </div>
+          </section>
+        {{-- <h1 class="text-xl">Nos partenaires</h1>
         <div class="slider">
             <div class="slide-track grid grid-cols-4 gap-16">
                 @foreach ($partenaires as $part)
@@ -14,7 +33,7 @@
                 @endforeach
                 
             </div>
-        </div>
+        </div> --}}
     </div>
     
 
@@ -91,4 +110,25 @@
         <p>&#9400; Kongoterra 2022, by : Systematik</p>
         
     </div>
+    <script>
+        document.addEventListener( 'DOMContentLoaded', function() {
+            var splide = new Splide('.splide', {
+                type   : 'loop',
+                drag   : 'free',
+                focus  : 'center',
+                perPage: 4,
+                autoScroll: {
+                    speed: 1,
+                },
+                classes: {
+                    arrows: '',
+                    arrow : 'bg-transparent',
+                    prev  : 'hidden',
+                    next  : 'hidden',
+                },
+            }).mount( window.splide.Extensions );
+            splide.mount();
+        } );
+
+    </script>
 </div>

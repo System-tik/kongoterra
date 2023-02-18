@@ -16,6 +16,7 @@
                 scroll-behavior: smooth;
             }
         </style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
         @livewireStyles
 
         <!-- Scripts -->
@@ -43,6 +44,8 @@
             window.scrollIntoView({ behavior: 'smooth' })
         </script>
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
          <script>
          $(document).ready(function(){
            // Add smooth scrolling to all links
