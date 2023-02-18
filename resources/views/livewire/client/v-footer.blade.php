@@ -1,13 +1,19 @@
 <div id="footer" class="w-full text-white bg-gray-900">
     <div class="px-5 py-5  lg:pt-20 2xl:px-64 lg:px-5 md:px-24 xl:px-24">
+
         <h1 class="text-xl">Nos partenaires</h1>
-        <div class="flex py-10 gap-10">
-            @foreach ($partenaires as $part)
-            <a class="flex flex-col justify-center items-center gap-4" href="{{$part->url}}" target="_blanc">
-                <img src="{{asset(Storage::url('public/partenaires/'.$part->id.'.png'))}}" class="w-40 h-40">
-                {{$part->nom}}
-            </a>
-            @endforeach
+        <div class="slider">
+            <div class="slide-track grid grid-cols-4 gap-16">
+                @foreach ($partenaires as $part)
+                <div class="slide">
+                    <a class="flex flex-col justify-center items-center gap-4" href="{{$part->url}}" target="_blanc">
+                        <img src="{{asset(Storage::url('public/partenaires/'.$part->id.'.png'))}}" class="w-40 h-40">
+                        {{$part->nom}}
+                    </a>  
+                </div>
+                @endforeach
+                
+            </div>
         </div>
     </div>
     
