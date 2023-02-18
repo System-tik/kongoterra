@@ -127,11 +127,13 @@
                 <div x-show="menus[9]" class="animate__animated animate__fadeIn">
                     <livewire:admin.v-actu>
                 </div>
-                <div x-show="menus[10]" class="animate__animated animate__fadeIn">
-                </div>
                 
+                
+            </div>
+            <div x-show="menus[10]" class="animate__animated animate__fadeIn">
                 <livewire:admin.v-partenaire/>
             </div>
+            
         </div>
     </div>
 </x-app-layout>

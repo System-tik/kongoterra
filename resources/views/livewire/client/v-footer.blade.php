@@ -1,6 +1,19 @@
-<div id="footer" class="w-full">
+<div id="footer" class="w-full text-white bg-gray-900">
+    <div class="px-5 py-5  lg:pt-20 2xl:px-64 lg:px-5 md:px-24 xl:px-24">
+        <h1 class="text-xl">Nos partenaires</h1>
+        <div class="flex py-10 gap-10">
+            @foreach ($partenaires as $part)
+            <a class="flex flex-col justify-center items-center gap-4" href="{{$part->url}}" target="_blanc">
+                <img src="{{asset(Storage::url('public/partenaires/'.$part->id.'.png'))}}" class="w-40 h-40">
+                {{$part->nom}}
+            </a>
+            @endforeach
+        </div>
+    </div>
+    
 
-    <div class="grid w-full gap-10 px-5 py-5 text-white bg-gray-900 lg:py-20 2xl:px-64 lg:px-5 md:px-24 xl:px-24 lg:grid-cols-2">
+    <div class="grid w-full gap-10  lg:grid-cols-2 px-5 py-5  lg:pb-20 2xl:px-64 lg:px-5 md:px-24 xl:px-24">
+        {{-- Partenaires --}}
         {{-- Success is as dangerous as failure. --}}
         @if (count($infos) > 0)
             
