@@ -4,13 +4,13 @@
         <section class="splide" aria-labelledby="carousel-heading">
             <h2 class="text-2xl pb-20 font-extrabold">Nos partenaires</h2>                
             <div class="splide__track">
-                <ul class="splide__list grid  gap-10 lg:gap-1">
+                <ul class="splide__list grid  ">
                     @foreach ($partenaires as $part)
                     <li class="splide__slide">
 
                         <a class="flex flex-col justify-center items-center gap-4 text-center" href="{{$part->url}}" target="_blanc">
-                            <img src="{{asset(Storage::url('public/partenaires/'.$part->id.'.png'))}}" class="h-10 w-10 md:h-20 md:w-20 lg:h-32 lg:w-32">
-                            <p>
+                            <img src="{{asset(Storage::url('public/partenaires/'.$part->id.'.png'))}}" class="h-10 w-10 md:h-20 md:w-20 lg:h-24 lg:w-24">
+                            <p class="w-2/3">
                                 {{$part->nom}}
                             </p>
                         </a>  
@@ -102,7 +102,7 @@
                 type   : 'loop',
                 drag   : 'free',
                 focus  : 'center',
-                perPage: 3,
+                perPage: 4,
                 autoScroll: {
                     speed: 1,
                 },
