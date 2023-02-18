@@ -1,4 +1,4 @@
-<div class="flex flex-col pb-4 bg-white rounded shadow-lg" data-aos="fade-up-left" data-aos-anchor-placement="top-bottom">
+<div class="flex flex-col pb-4 bg-white rounded shadow-lg" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1900">
     <img src="{{asset('img/maison/191199962_327186845676843_5614446053251912539_n.jpg')}}" alt="" srcset="" class="w-full " style="border-radius: 4%">
     @if (Storage::exists(Storage::files('public/produits/'.$produit->id)[0]))    
     <img 

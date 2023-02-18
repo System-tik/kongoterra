@@ -1,6 +1,6 @@
 <div id="services" class="bg-left bg-no-repeat bg-cover" style="background-image:url('{{asset('img/f3.jpg')}}')">
     {{-- Nothing in the world is as soft and yielding as water. --}}
-    <div class="px-5 py-5 bg-gradient-to-r via-transparent to-black 2xl:px-64 lg:px-5 md:px-24 xl:px-24 from-black lg:from-transparent lg:via-white lg:to-white" data-aos="flip-right">
+    <div class="px-5 py-5 bg-gradient-to-r via-transparent to-black 2xl:px-64 lg:px-5 md:px-24 xl:px-24 from-black lg:from-transparent lg:via-white lg:to-white" data-aos="flip-right" data-aos-duration="1900">
 
         {{-- <h1 class="text-2xl font-bold">Nos services</h1>
         <hr>
@@ -39,7 +39,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </span>
-                        <h3 class="flex items-center mb-1 text-lg font-semibold text-white lg:text-gray-900 dark:text-white">{{$serv->nom}}<a href="{{route('service', $serv->id)}}" class="bg-blue-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">Lire...</a></h3>
+                        <h3 class="flex items-center mb-1 text-lg font-semibold text-white lg:text-gray-900 dark:text-white ">{{$serv->nom}}<a href="{{route('service', $serv->id)}}" class="bg-blue-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">Lire...</a></h3>
                         {{-- <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released on January 13th, 2022</time> --}}
                         <p class="mb-4 text-base font-normal text-white lg:text-gray-500 dark:text-gray-400">{{substr($serv->descrip, 0, 100)}}...</p>   
                         {{-- <p class="pt-5 text-justify">{{ $serv->descrip }}</p> --}}
